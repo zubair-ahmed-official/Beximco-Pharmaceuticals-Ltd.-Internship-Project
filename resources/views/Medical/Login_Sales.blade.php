@@ -59,7 +59,7 @@ integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg
 					<tr><td></td></tr><tr><td></td></tr>
 					<tr><td></td></tr>
 					<tr><td></td></tr>
-					<tr> <td align="right"> <b> &nbsp;&nbsp; Password/OTP: </td>
+					<tr> <td align="right"> <b> &nbsp;&nbsp; Password: </td>
 						<td align="center"><input name="code" placeholder="Password"  type="Password"> <br> 
                         @error('code')
                             <span class="text-danger"> {{$message}} </span>

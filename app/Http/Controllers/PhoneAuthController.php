@@ -39,6 +39,32 @@ class PhoneAuthController extends Controller
     }
     public function register_store(Request $request)
     {
+        $request->validate(
+          [
+            'name'=>'required', 
+            'code'=>'required|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/',
+            'email'=>'required|email',
+            'phone'=>'required|min:11',
+            'nid'=>'required', 
+            'address'=>'required',
+            'gender'=>'required',
+            'age'=>'required',
+            'edu'=>'required'
+          ],
+          [
+            'name.required'=>'Please Enter a valid Name',
+            'code.required'=>'Please Enter a valid code',
+            'code.regex'=>'Password condition doesn\'t match',
+            'email.required'=>'Please Enter a valid email',
+            'phone.required'=>'Please Enter a valid phone',
+            'phone.min'=>'Invalid phone number',
+            'nid.required'=>'Please Enter a valid nid',
+            'address.required'=>'Please Enter a valid address',
+            'gender.required'=>'Please Enter a valid gender',
+            'age.required'=>'Please Enter a valid age',
+            'edu.required'=>'Please Enter a valid education',
+          ]
+        );
         $reg = new Register;
         $reg->name = $request->input('name');
         $reg->code = $request->input('code');

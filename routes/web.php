@@ -63,10 +63,15 @@ Route::get('index_medis', [MedicalController::class, 'index_medis']);
 Route::get('add-med', [MedicalController::class, 'create_med']);
 Route::post('add-med', [MedicalController::class, 'store_med']);
 
+Route::get('cust_med', [MedicalController::class, 'cust_med']);
+
 Route::get('med', [MedicalController::class, 'index_med']);
 Route::get('edit-med/{id}', [MedicalController::class, 'edit_med']);
 Route::put('update-med/{id}', [MedicalController::class, 'update_med']);
 Route::get('delete-med/{id}', [MedicalController::class, 'destroy_med']);
+
+Route::get('order-med/{id}', [MedicalController::class, 'ordering_med']);
+Route::post('order-med/{id}', [MedicalController::class, 'order_med']);
 
 Route::get('add-dis', [MedicalController::class, 'create_dis']);
 Route::post('add-dis', [MedicalController::class, 'store_dis']);

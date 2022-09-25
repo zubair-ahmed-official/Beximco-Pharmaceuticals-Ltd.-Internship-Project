@@ -6,6 +6,7 @@ use App\Models\Doctor;
 use App\Models\Medicine;
 use App\Models\Disease;
 use App\Models\Medicines_Diseases;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class MedicalController extends Controller
@@ -21,6 +22,13 @@ class MedicalController extends Controller
         $med = Medicine::all();
         return view('Medical.Medicine_index', compact('med'));
     }
+
+    public function cust_med()
+    {
+        $cust_med = Medicine::all();
+        return view('Medical.Cust_Med_Index', compact('cust_med'));
+    }
+
     public function index_medis()
     {
         $dis = Disease::all();
@@ -187,6 +195,32 @@ class MedicalController extends Controller
        
         $med->update();
         return redirect()->back()->with('status','Medicines Information Updated Successfully');
+    }
+
+    public function ordering_med($id)
+    {
+        $order_med = Medicine::find($id);
+        return view('Medical.order_med', compact('order_med'));
+    }
+
+    public function order_med(Request $request, $id)
+    {
+        /*$med = Medicine::find($id);
+        $med->name = $request->input('name');
+        $med->disease = $request->input('disease');
+        $med->details = $request->input('details');
+        $med->price = $request->input('price');
+        $med->num = $request->input('num');*/
+       
+        $med = new Order;
+        $med->name = $request->input('name');
+        $med->disease = $request->input('disease');
+        //$med->details = $request->input('details');
+        $med->price = $request->input('price');
+        $med->num = $request->input('num');
+       
+        $med->save();
+        return redirect()->back()->with('status','Medicines Ordered Successfully');
     }
 
     public function update_dis(Request $request, $id)

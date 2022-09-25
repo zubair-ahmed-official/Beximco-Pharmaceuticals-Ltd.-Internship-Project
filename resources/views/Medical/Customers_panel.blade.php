@@ -10,7 +10,7 @@
 	<table align="center" class="container table table-striped"  border="4">
     <tr><td></td><td></td></tr>
     <td align="center"> <b> List of Medicines </td>
-	<td align="center"><a href =""><input type="button" class="btn btn btn-success" style="width: 70px" value="Show"> </a></td>
+	<td align="center"><a href ="cust_med"><input type="button" class="btn btn btn-success" style="width: 70px" value="Show"> </a></td>
 	</tr>
 
 	<td align="center"> <b> All Categories of Disease</td>
@@ -18,7 +18,7 @@
 	</tr>
 
 	<tr>
-	<td align="center"><b> Add Doctor's Appointment</td>
+	<td align="center"><b> Doctor's Appointment</td>
 	<td align="center"><a href =""><input type="button" class="btn btn btn-success" style="width: 70px"  value="Show"> </a></td>
 	</tr>
 

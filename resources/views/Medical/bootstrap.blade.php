@@ -20,8 +20,8 @@ integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg
 				<p  style="font-size: 200%; color: rgb(0, 64, 128)"><b>Beximco Pharmaceuticals Ltd.</b></p>
 			</td>
 			<td align="right">
-				<a style="font-size: 85%;" href="HomePageF.php" class="btn btn-outline-success"><b>HOME</a>
-				&nbsp;&nbsp;<a style="font-size: 85%;" class="btn btn-outline-danger"><b>CONTACT US</a>
+				<a style="font-size: 85%;" href="" class="btn btn-outline-success"><b>HOME</a>
+				&nbsp;&nbsp;<a href="/main" style="font-size: 85%;" class="btn btn-outline-danger"><b>LOGOUT</a>
 				&nbsp;&nbsp;
 			</td>
 		</tr>
