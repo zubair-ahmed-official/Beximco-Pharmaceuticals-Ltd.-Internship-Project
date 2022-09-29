@@ -11,15 +11,15 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h4 style="color: brown"><b>Order Medicine</b>
-                    <a href="{{ url('cust_med') }}" class="btn btn-outline-danger float-end"><b>Medicine Lists</b></a>
+                    <h4>Edit & Update Medicine
+                    <a href="{{ url('med') }}" class="btn btn-outline-danger float-end">Lists</a>
                     </h4>
                 </div>
                 <div class="card-body">
 
-                    <form action="{{ url('order-med/'.$order_med->id) }}" method="POST">
+                    <form action="{{ url('/'.$med->id) }}" method="POST">
                         @csrf
-                        @method('POST')
+                        @method('PUT')
 
                         <div class="form-group mb-3">
                             <label for=""><b>Customer's Name:</b></label>
@@ -83,9 +83,9 @@
                             &nbsp; <span class="text-danger"><b> {{$message}}</b> </span>
                             @enderror
                         </div>
-
+                        
                         <div class="form-group mb-3">
-                            <button type="submit" class="btn btn-outline-primary" ><b>Order Medicines</b></button>
+                            <button type="submit" class="btn btn-primary">Update Order Information</button>
                         </div>
 
                     </form>

@@ -27,8 +27,10 @@ Route::get('/phone-auth', [PhoneAuthController::class, 'index']);
 Route::post('/phone-auth', [PhoneAuthController::class, 'otp_store']);
 
 //Route::get('login-otp', [PhoneAuthController::class, 'login_otp']);
-Route::get('/main', [PhoneAuthController::class, 'login_otp']);
+Route::get('/main', [PhoneAuthController::class, 'login_otp'])->name('login_otp');
 Route::post('/main',[PhoneAuthController::class, 'checkLogin'])->name('checkLogin');
+
+Route::get('/logout', [PhoneAuthController::class, 'logout'])->name('logout');
 
 Route::get('/register', [PhoneAuthController::class, 'register']);
 Route::post('/register', [PhoneAuthController::class, 'register_store']);
@@ -63,15 +65,17 @@ Route::get('index_medis', [MedicalController::class, 'index_medis']);
 Route::get('add-med', [MedicalController::class, 'create_med']);
 Route::post('add-med', [MedicalController::class, 'store_med']);
 
-Route::get('cust_med', [MedicalController::class, 'cust_med']);
+Route::get('cust_med', [MedicalController::class, 'cust_med'])->middleware('Auth');
 
 Route::get('med', [MedicalController::class, 'index_med']);
 Route::get('edit-med/{id}', [MedicalController::class, 'edit_med']);
 Route::put('update-med/{id}', [MedicalController::class, 'update_med']);
 Route::get('delete-med/{id}', [MedicalController::class, 'destroy_med']);
 
-Route::get('order-med/{id}', [MedicalController::class, 'ordering_med']);
-Route::post('order-med/{id}', [MedicalController::class, 'order_med']);
+Route::get('order-med/{id}', [MedicalController::class, 'ordering_med'])->middleware('Auth');
+Route::post('order-med/{id}', [MedicalController::class, 'order_med'])->middleware('Auth');
+
+Route::get('index_orders', [MedicalController::class, 'index_orders']);
 
 Route::get('add-dis', [MedicalController::class, 'create_dis']);
 Route::post('add-dis', [MedicalController::class, 'store_dis']);

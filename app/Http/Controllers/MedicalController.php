@@ -26,6 +26,7 @@ class MedicalController extends Controller
     public function cust_med()
     {
         $cust_med = Medicine::all();
+        //return redirect()->route('cust_med')->compact('cust_med');
         return view('Medical.Cust_Med_Index', compact('cust_med'));
     }
 
@@ -39,6 +40,12 @@ class MedicalController extends Controller
     {
         $dis = Disease::all();
         return view('Medical.Disease_index', compact('dis'));
+    }
+
+    public function index_orders()
+    {
+        $order = Order::all();
+        return view('Medical.Order_index', compact('order'));
     }
 
     public function Medicines_Diseases(Request $req)
@@ -205,20 +212,41 @@ class MedicalController extends Controller
 
     public function order_med(Request $request, $id)
     {
-        /*$med = Medicine::find($id);
-        $med->name = $request->input('name');
-        $med->disease = $request->input('disease');
-        $med->details = $request->input('details');
-        $med->price = $request->input('price');
-        $med->num = $request->input('num');*/
+        $request->validate(
+            [
+              'cname'=>'required', 
+              'address'=>'required',
+              'phone'=>'required',
+              'name'=>'required', 
+              'disease'=>'required',
+              'price'=>'required|regex:/^[0-9]+$/',
+              'num'=>'required',
+              'payment'=>'required'
+            ],
+            [
+              'cname.required'=>'Please Enter your Name', 
+              'address.required'=>'Please Enter your Address',
+              'phone.required'=>'Please Enter your Phone',
+              'name.required'=>'Please Enter a valid Name',
+              'disease.required'=>'Please Enter a valid Disease',
+              'price.required'=>'Please Enter a valid Price',
+              'price.regex'=>'Please Enter a Numeric Price',
+              'payment.required'=>'Please Enter a payment method'
+            ]
+          );
+
        
         $med = new Order;
+        $med->cname = $request->input('cname');
+        $med->address = $request->input('address');
+        $med->phone = $request->input('phone');
         $med->name = $request->input('name');
         $med->disease = $request->input('disease');
         //$med->details = $request->input('details');
         $med->price = $request->input('price');
         $med->num = $request->input('num');
-       
+        $med->tprice = $med->price * $med->num;
+        $med->payment = $request->input('payment');
         $med->save();
         return redirect()->back()->with('status','Medicines Ordered Successfully');
     }

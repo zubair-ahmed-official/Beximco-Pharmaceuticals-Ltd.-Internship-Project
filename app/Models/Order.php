@@ -13,6 +13,7 @@ class Order extends Model
         'disease',
         'details',
         'price',
-        'num'
+        'num',
+        'payment'
     ];
 }

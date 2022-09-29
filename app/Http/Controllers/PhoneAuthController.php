@@ -120,12 +120,22 @@ class PhoneAuthController extends Controller
           'code.exists'=>'OTP Code does not exist'
         ]
       );
-      $user = OTP:: where('name',$request->name)-> where('code',$request->code);
+      $user = OTP:: where('name',$request->name)-> where('code',$request->code)->first();
       if($user == true)
       {
+        session()->put('name',$user->name);
+        //session()->flash('status','Login Successful');
         return view('Medical.Customers_panel');
+        //return redirect()->route('Medical.Customers_panel');
       }
     }
+
+    public function logout()
+    {
+      session()->flush();
+      return redirect()->route('login_otp');
+    }
+
 
     public function admin_login(Request $request)
     {
