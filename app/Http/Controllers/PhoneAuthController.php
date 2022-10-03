@@ -253,21 +253,9 @@ class PhoneAuthController extends Controller
       $user = Disease :: all()->where('name',$Name);
       return view('Medical.search_result')->with('user',$user);
     }
+
     public function My_Orders(Request $request)
     {			
-      /*$request->validate(
-        [
-          'name'=>'required|exists:diseases,name', 
-        ],
-        [
-          'name.required'=>'Please Enter a valid Name',
-          'name.exists'=>'Name does not exist',
-          
-        ]
-      );*/
-      //$user = Disease:: where('name',$request->name);
-      //return view('Medical.search_result', compact('user'));
-      //$user = Doctor::where('name',$request->name);
     if($request->session()->has('name'))
     {
       //echo $request->session()->get('name');
@@ -281,7 +269,21 @@ class PhoneAuthController extends Controller
       //$Name = Str::ucfirst($Name);
     
     }
+    //profile
     
-
+    public function profile(Request $request)
+    {			
+    if($request->session()->has('name'))
+    {
+      //echo $request->session()->get('name');
+      $Name = $request->session()->get('name');
+      $user = Register :: all()->where('name',$Name);                                                
+      return view('Medical.profile')->with('user',$user);
+    }
+    else
+      echo 'No data in the session';
+      //$Name = Str::ucfirst($Name);
+    
+    }
 
 }

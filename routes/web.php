@@ -112,4 +112,6 @@ Route::post('/search_result',[PhoneAuthController::class, 'findSearch'])->name('
 
 Route::get('/My_Orders',[PhoneAuthController::class, 'My_Orders'])->name('My_Orders')->middleware('Auth');
 
+Route::get('profile', [PhoneAuthController::class, 'profile'])->middleware('Auth');
+
 //Route::get('/search_result', [PhoneAuthController::class, 'search_result']);
