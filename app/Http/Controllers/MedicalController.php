@@ -6,7 +6,8 @@ use App\Models\Doctor;
 use App\Models\Medicine;
 use App\Models\Disease;
 use App\Models\Medicines_Diseases;
-use App\Models\Order;
+use App\Models\Order; 
+use App\Models\Delivered_order;
 use Illuminate\Http\Request;
 
 class MedicalController extends Controller
@@ -63,6 +64,12 @@ class MedicalController extends Controller
     {
         $order = Order::all();
         return view('Medical.Order_index', compact('order')); //Cust_Medicines_Diseases
+    }
+
+    public function deliver_index()
+    {
+        $order = Delivered_order::all();
+        return view('Medical.Deliver_index', compact('order')); //Cust_Medicines_Diseases
     }
 
     public function Cust_Medicines_Diseases(Request $req)
@@ -234,6 +241,41 @@ class MedicalController extends Controller
     {
         $order_med = Medicine::find($id);
         return view('Medical.order_med', compact('order_med'));
+    } 
+
+    public function delivering_order($id)
+    {
+        $order_med = Order::find($id);
+        return view('Medical.Deliver_order', compact('order_med'));
+    }
+
+    public function deliver_order(Request $request,$id)
+    {
+        $med = new Delivered_order;
+        $med->cname = $request->input('cname');
+        $med->address = $request->input('address');
+        $med->phone = $request->input('phone');
+        $med->name = $request->input('name');
+        $med->disease = $request->input('disease');
+        //$med->details = $request->input('details');
+        $med->price = $request->input('price');
+        $med->num = $request->input('num');
+        $med->tprice = $med->price * $med->num;
+        $med->payment = $request->input('payment');
+        $med->save();
+
+        $delete_order = Order::find($id);
+        if($delete_order != null)
+        {
+            $delete_order->delete();
+        }
+
+        //$order = Order::all();
+        //return view('Medical.Order_index', compact('order')); //Cust_Medicines_Diseases
+        
+
+        return redirect()->to('/index_orders')->with('status','Order delivered Successfully');     
+        
     }
 
     public function order_med(Request $request, $id)

@@ -8,7 +8,7 @@
             @endif
             <div class="card">
                 <div class="card-header">
-                    <h4 style="color:rgb(45, 45, 134)"><b>Customer's Orders</b>
+                    <h4 style="color:rgb(179, 0, 89)"><b>Orders Delivered</b>
                     </h4>
                 </div>
                 <div class="card-body">
@@ -28,7 +28,7 @@
                                 <th>Payment</th>
                                 <th>Edit</th>
                                 <th>Delete</th>
-                                <th>Deliver</th>
+                                
                             </tr>
                         </thead>
                         <tbody>
@@ -49,9 +49,7 @@
                                 <td>
                                     <a href="{{ url('delete-order/'.$item->id) }}" class="btn btn-outline-danger btn-sm"><b>Delete</b></a>
                                 </td>  
-                                <td>
-                                    <a href="{{ url('deliver-order/'.$item->id) }}" class="btn btn-secondary btn-sm"><b>Deliver</b></a>
-                                </td>                             
+                                                          
                                 </td>
                             </tr>
                             @endforeach

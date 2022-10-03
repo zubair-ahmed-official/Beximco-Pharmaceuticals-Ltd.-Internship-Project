@@ -16,6 +16,7 @@ use App\Http\Requests;
 use App\Models\Disease;
 use App\Models\Doctor;
 use App\Models\Order;
+use App\Models\Delivered_order;
 use Illuminate\Support\Str;
 
 
@@ -272,8 +273,8 @@ class PhoneAuthController extends Controller
       //echo $request->session()->get('name');
       $Name = $request->session()->get('name');
       $user = Order :: all()->where('cname',$Name);                         
-                             
-      return view('Medical.My_Orders')->with('user',$user);
+      $del = Delivered_order :: all()->where('cname',$Name);                           
+      return view('Medical.My_Orders')->with('user',$user)->with('del',$del);
     }
     else
       echo 'No data in the session';
@@ -282,5 +283,5 @@ class PhoneAuthController extends Controller
     }
     
 
-  
+
 }

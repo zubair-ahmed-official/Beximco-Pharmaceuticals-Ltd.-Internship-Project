@@ -11,38 +11,28 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h4 style="color: brown"><b>Order Medicine</b>
-                    <a href="{{ url('cust_med') }}" class="btn btn-outline-danger float-end"><b>Medicine Lists</b></a>
+                    <h4 style="color:rgb(230, 92, 0)"> <b>Deliver the Order</b>
+                    <a href="{{ url('med') }}" class="btn btn-outline-danger float-end"><b>Lists</b></a>
                     </h4>
                 </div>
                 <div class="card-body">
 
-                    <form action="{{ url('order-med/'.$order_med->id) }}" method="POST">
+                    <form action="{{ url('deliver-order/'.$order_med->id) }}" method="POST">
                         @csrf
                         @method('POST')
 
                         <div class="form-group mb-3">
                             <label for=""><b>Customer's Name:</b></label>
-                            <input type="text" name="cname" value="{{session()->get('name')}}" class="form-control" readonly>
-                            @error('cname')
-                            <span class="text-danger"><b> {{$message}} </b></span>
-                            @enderror
+                            <input type="text" name="cname" value="{{$order_med->cname}}" class="form-control" readonly>                         
                         </div>
 
                         <div class="form-group mb-3">
                             <label for=""><b>Customer's Address:</b></label>
-                            <input type="text" name="address" value="{{$order_med->address}}" class="form-control">
-                            @error('address')
-                            <span class="text-danger"><b> {{$message}} </b></span>
-                            @enderror
+                            <input type="text" name="address" value="{{$order_med->address}}" class="form-control" readonly>                           
                         </div>
-
                         <div class="form-group mb-3">
                             <label for=""><b>Customer's phone:</b></label>
-                            <input type="number" name="phone" value="{{$order_med->phone}}" class="form-control">
-                            @error('phone')
-                            <span class="text-danger"><b> {{$message}}</b> </span>
-                            @enderror
+                            <input type="text" name="phone" value="{{$order_med->phone}}" class="form-control" readonly>
                         </div>
                         
                         <div class="form-group mb-3">
@@ -63,29 +53,17 @@
                         </div>
                         <div class="form-group mb-3">
                             <label for=""><b>Number of Medicines:</b></label>&nbsp;
-                            <select name="num" > 
-                            <option selected disabled >--Number--</option>
-                            <?php for($i=1;$i<=20;$i++)
-                            if($i == true)
-                            echo "<option selected>$i</option>"; 
-                            else 
-                                echo "<option>$i</option>"; 
-                            ?>
-                            </select> 
+                            <input type="text" name="num" value="{{$order_med->num}}" class="form-control" readonly>
+                            
                         </div>
                         
                         <div class="form-group mb-3 ">
                             <label for=""><b>Payment Method:</b></label>
-                            <br><br><input  type="radio" name="payment" value="Cash" >
-                            <label> Cash &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                            <input type="button" class="btn btn-outline-dark"  value="Online Payment">
-                            @error('payment')
-                            &nbsp; <span class="text-danger"><b> {{$message}}</b> </span>
-                            @enderror
+                            <input type="text" name="payment" value="{{$order_med->payment}}" class="form-control" readonly>
                         </div>
-
-                        <div class="form-group mb-3">
-                            <button type="submit" class="btn btn-outline-primary" ><b>Order Medicines</b></button>
+                        
+                        <div class="form-group mb-3 float-end">
+                            <button type="submit" class="btn btn-primary"><b>Deliver</button>
                         </div>
 
                     </form>

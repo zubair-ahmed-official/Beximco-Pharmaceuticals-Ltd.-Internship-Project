@@ -79,7 +79,13 @@ Route::get('delete-med/{id}', [MedicalController::class, 'destroy_med']);
 Route::get('order-med/{id}', [MedicalController::class, 'ordering_med'])->middleware('Auth');
 Route::post('order-med/{id}', [MedicalController::class, 'order_med'])->middleware('Auth');
 
-Route::get('index_orders', [MedicalController::class, 'index_orders']);
+Route::get('index_orders', [MedicalController::class, 'index_orders']); //deliver-order Deliver_index
+
+Route::get('deliver_index', [MedicalController::class, 'deliver_index']);
+
+Route::get('deliver-order/{id}', [MedicalController::class, 'delivering_order']);
+Route::post('deliver-order/{id}', [MedicalController::class, 'deliver_order']);
+
 
 Route::get('add-dis', [MedicalController::class, 'create_dis']);
 Route::post('add-dis', [MedicalController::class, 'store_dis']);
