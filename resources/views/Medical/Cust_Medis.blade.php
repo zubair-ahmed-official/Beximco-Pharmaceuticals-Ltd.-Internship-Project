@@ -11,21 +11,19 @@
             <div class="card-header">
                    <h4>
                    <b style="color:navy"> Medicines for Disease </b>
-                    <a href="{{ url('med') }}" class="btn btn-outline-danger float-end">Medicines Lists</a>
                     </h4>
-              
                 </div>
                 <div class="card-body">
 
                 
 
-                        <form action="{{ url('Med_Dis') }}" method="POST">
+                        <form action="{{ url('Cust_Med_Dis') }}" method="POST">
                         @csrf
                    
                       
                         @foreach($dis as $row)
                         <div class="btn-group-horizontal" >
-                           <a href="{{url('Med_Dis/'.$row->id)}}" class="btn btn-outline-dark d-grid" ><b>{{$row->name}}</a> 
+                           <a href="{{url('Cust_Med_Dis/'.$row->id)}}" class="btn btn-outline-dark d-grid" ><b>{{$row->name}}</a> 
                         </div> 
                         <br>  
                         @endforeach

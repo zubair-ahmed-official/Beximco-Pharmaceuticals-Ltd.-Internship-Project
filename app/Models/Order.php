@@ -9,6 +9,9 @@ class Order extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'cname',
+        'address',
+        'phone',
         'name',
         'disease',
         'details',

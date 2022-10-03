@@ -12,9 +12,10 @@ use Hash;
 use Session;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
-//use Illuminate\Support\Facades\Input;
+//use Illuminate\Support\Facades\Input; 
 use App\Models\Disease;
 use App\Models\Doctor;
+use App\Models\Order;
 use Illuminate\Support\Str;
 
 
@@ -117,7 +118,7 @@ class PhoneAuthController extends Controller
           'name.required'=>'Please enter a valid Name',
           'code.required'=>'Please enter valid Password/OTP',
           'name.exists'=>'Name does not exist',
-          'code.exists'=>'OTP Code does not exist'
+          'code.exists'=>'Password/OTP Code does not exist'
         ]
       );
       $user = OTP:: where('name',$request->name)-> where('code',$request->code)->first();
@@ -148,17 +149,17 @@ class PhoneAuthController extends Controller
       //return $request;
       $request->validate(
         [
-          'name'=>'required|exists:admins,name',
+          'aname'=>'required|exists:admins,aname',
           'code'=>'required|exists:admins,code'
         ],
         [
-          'name.required'=>'Please enter a valid Name',
+          'aname.required'=>'Please enter a valid Name',
           'code.required'=>'Please enter valid Password/OTP',
-          'name.exists'=>'Name does not exist',
+          'aname.exists'=>'Name does not exist',
           'code.exists'=>'OTP Code does not exist'
         ]
       );
-      $user = Admin:: where('name',$request->name)-> where('code',$request->code);
+      $user = Admin:: where('aname',$request->aname)-> where('code',$request->code);
       if($user == true)
       {
         return view('Medical.Admin_panel');
@@ -250,6 +251,34 @@ class PhoneAuthController extends Controller
       $Name = Str::ucfirst($Name);
       $user = Disease :: all()->where('name',$Name);
       return view('Medical.search_result')->with('user',$user);
+    }
+    public function My_Orders(Request $request)
+    {			
+      /*$request->validate(
+        [
+          'name'=>'required|exists:diseases,name', 
+        ],
+        [
+          'name.required'=>'Please Enter a valid Name',
+          'name.exists'=>'Name does not exist',
+          
+        ]
+      );*/
+      //$user = Disease:: where('name',$request->name);
+      //return view('Medical.search_result', compact('user'));
+      //$user = Doctor::where('name',$request->name);
+    if($request->session()->has('name'))
+    {
+      //echo $request->session()->get('name');
+      $Name = $request->session()->get('name');
+      $user = Order :: all()->where('cname',$Name);                         
+                             
+      return view('Medical.My_Orders')->with('user',$user);
+    }
+    else
+      echo 'No data in the session';
+      //$Name = Str::ucfirst($Name);
+    
     }
     
 

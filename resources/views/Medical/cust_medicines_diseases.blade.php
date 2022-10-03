@@ -5,10 +5,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4> Diseases Index
-                    @if(Session::has('aname'))
-                    <a href="{{ url('Med_Dis') }}" class="btn btn-outline-success float-end">Add Medicines with Diseases Details </a>
-                    @endif
+                    <h4> <b>Diseases Index</b>
                     </h4>
                 </div>
                 <div class="card-body">
@@ -17,7 +14,7 @@
                         
                         <tbody>
                             <tr><td><h5><b> Disease &nbsp;</h5></td>
-                            <td><h5><b> Medicine</h5></td><td></td></tr>
+                            <td><h5><b> Medicine</h5></td></tr>
                                 
                                 <tr><td rowspan="100"><b> {{$Diseases->name}}</b></td>
                             
@@ -30,9 +27,7 @@
                                    <br><span><b>Price: </b></span> {{$item->medicine->price}} <span> BDT </span>
                                     
                                 </td>
-                               <td>
-                                @if(Session::has('aname')) <a href="{{ url('destroy_md/'.$item->id) }}" class="btn btn-danger btn-sm">
-                                    Delete</a>@endif</td>
+                               
                             </tr>
                             @endforeach
                         </tbody>

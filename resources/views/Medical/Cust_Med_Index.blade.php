@@ -6,7 +6,8 @@
             <div class="card">
                 <div class="card-header">
                     <h4 style="color: purple"><b>Medicine's Information</b>
-                    </h4>
+                    
+                    <a href="{{ url('My_Orders') }}" class="btn btn-outline-primary btn-md float-end"><b> My Orders </a></h4> 
                 </div>
                 <div class="card-body">
 

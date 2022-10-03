@@ -17,6 +17,12 @@ class MedicalController extends Controller
         return view('Medical.index', compact('student'));
     }
 
+    public function doctor_appointment()
+    {
+        $student = Doctor::all();
+        return view('Medical.Doctors_Appointment', compact('student'));
+    }
+
     public function index_med()
     {
         $med = Medicine::all();
@@ -29,11 +35,22 @@ class MedicalController extends Controller
         //return redirect()->route('cust_med')->compact('cust_med');
         return view('Medical.Cust_Med_Index', compact('cust_med'));
     }
+    public function cust_index_medis()
+    {
+        $dis = Disease::all();
+        return view('Medical.Cust_Medis', compact('dis'));
+    }
 
     public function index_medis()
     {
         $dis = Disease::all();
         return view('Medical.Medis', compact('dis'));
+    }
+
+    public function cust_dis()
+    {
+        $dis = Disease::all();
+        return view('Medical.Cust_Disease_index', compact('dis'));
     }
 
     public function index_dis()
@@ -45,7 +62,16 @@ class MedicalController extends Controller
     public function index_orders()
     {
         $order = Order::all();
-        return view('Medical.Order_index', compact('order'));
+        return view('Medical.Order_index', compact('order')); //Cust_Medicines_Diseases
+    }
+
+    public function Cust_Medicines_Diseases(Request $req)
+    {
+        $Diseases = Disease::where('id',$req->id)->first();
+       
+        return view('Medical.cust_medicines_diseases')->with('Diseases',$Diseases);
+
+        return view('Medical.DiseasesList')->with('Diseases',$Diseases);
     }
 
     public function Medicines_Diseases(Request $req)

@@ -14,12 +14,12 @@
 	</tr>
 
 	<td align="center"> <b> All Categories of Disease</td>
-	<td align="center"><a href =""><input type="button" class="btn btn btn-success" style="width: 70px" value="Show"> </a></td>
+	<td align="center"><a href ="cust_dis"><input type="button" class="btn btn btn-success" style="width: 70px" value="Show"> </a></td>
 	</tr>
 
 	<tr>
 	<td align="center"><b> Doctor's Appointment</td>
-	<td align="center"><a href =""><input type="button" class="btn btn btn-success" style="width: 70px"  value="Show"> </a></td>
+	<td align="center"><a href ="doctor_appointment"><input type="button" class="btn btn btn-success" style="width: 70px"  value="Show"> </a></td>
 	</tr>
 
     <tr>

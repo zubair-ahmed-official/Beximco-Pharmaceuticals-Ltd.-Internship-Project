@@ -53,7 +53,9 @@ Route::get('main/successlogin', [PhoneAuthController::class,'successlogin']);
 
 
 Route::get('add-doctors', [MedicalController::class, 'create']);
-Route::post('add-doctors', [MedicalController::class, 'store']);
+Route::post('add-doctors', [MedicalController::class, 'store']); //doctor_appointment
+
+Route::get('doctor_appointment', [MedicalController::class, 'doctor_appointment']);
 
 Route::get('doctors', [MedicalController::class, 'index']);
 Route::get('edit-doctors/{id}', [MedicalController::class, 'edit']);
@@ -61,6 +63,8 @@ Route::put('update-doctors/{id}', [MedicalController::class, 'update']);
 Route::get('delete-doctors/{id}', [MedicalController::class, 'destroy']);
 
 Route::get('index_medis', [MedicalController::class, 'index_medis']);
+
+Route::get('cust_index_medis', [MedicalController::class, 'cust_index_medis'])->middleware('Auth');
 
 Route::get('add-med', [MedicalController::class, 'create_med']);
 Route::post('add-med', [MedicalController::class, 'store_med']);
@@ -80,6 +84,8 @@ Route::get('index_orders', [MedicalController::class, 'index_orders']);
 Route::get('add-dis', [MedicalController::class, 'create_dis']);
 Route::post('add-dis', [MedicalController::class, 'store_dis']);
 
+Route::get('cust_dis', [MedicalController::class, 'cust_dis'])->middleware('Auth');
+
 Route::get('dis', [MedicalController::class, 'index_dis']);
 Route::get('edit-dis/{id}', [MedicalController::class, 'edit_dis']);
 Route::put('update-dis/{id}', [MedicalController::class, 'update_dis']);
@@ -87,13 +93,17 @@ Route::get('delete-dis/{id}', [MedicalController::class, 'destroy_dis']);
 
 Route::get('Med_Dis/{id}', [MedicalController::class, 'Medicines_Diseases']);
 
+Route::get('Cust_Med_Dis/{id}', [MedicalController::class, 'Cust_Medicines_Diseases']);
+
 Route::get('Med_Dis', [MedicalController::class, 'MeDis']);//dlist
-Route::post('Med_Dis', [MedicalController::class, 'store_MeDis']);//dlist destroy_md
+Route::post('Med_Dis', [MedicalController::class, 'store_MeDis']);//dlist destroy_md 
 
 Route::get('destroy_md/{id}', [MedicalController::class, 'destroy_md']);
 
 
 Route::get('/search', [PhoneAuthController::class, 'find']);
 Route::post('/search_result',[PhoneAuthController::class, 'findSearch'])->name('findSearch');
+
+Route::get('/My_Orders',[PhoneAuthController::class, 'My_Orders'])->name('My_Orders')->middleware('Auth');
 
 //Route::get('/search_result', [PhoneAuthController::class, 'search_result']);

@@ -10,7 +10,7 @@ class Admin extends Model
     use HasFactory;
     
     protected $fillable = [
-        'name',
+        'aname',
         'code'
     ];
 }
