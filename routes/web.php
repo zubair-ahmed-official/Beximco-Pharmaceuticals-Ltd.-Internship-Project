@@ -57,6 +57,8 @@ Route::post('add-doctors', [MedicalController::class, 'store']); //doctor_appoin
 
 Route::get('doctor_appointment', [MedicalController::class, 'doctor_appointment']);
 
+Route::get('book_doctor_appointment/{id}', [MedicalController::class, 'book_doctor_appointment']);
+
 Route::get('doctors', [MedicalController::class, 'index']);
 Route::get('edit-doctors/{id}', [MedicalController::class, 'edit']);
 Route::put('update-doctors/{id}', [MedicalController::class, 'update']);

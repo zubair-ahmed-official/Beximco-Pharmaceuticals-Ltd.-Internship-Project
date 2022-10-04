@@ -200,6 +200,12 @@ class MedicalController extends Controller
         return view('Medical.edit', compact('student'));
     }
 
+    public function book_doctor_appointment($id)
+    {
+        $student = Doctor::find($id);
+        return view('Medical.Booking_DrAppointment', compact('student'));
+    }
+
     public function edit_med($id)
     {
         $med = Medicine::find($id);

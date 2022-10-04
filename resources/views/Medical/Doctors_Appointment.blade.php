@@ -1,11 +1,11 @@
 
 @include('Medical.bootstrap')
-<div class="container p-1">
+<div class="">
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Doctor's Information</h4>
+                    <h4 style="color:rgb(204, 0, 0)"><b>Doctor's Information</b></h4>
                 </div>
                 <div class="card-body">
 
@@ -31,7 +31,7 @@
                                 <td>{{ $item->email }}</td>
                                 <td>{{ $item->department }}</td>
                                 <td>{{ $item->bio }}</td>
-                                <td><a href="{{ url('') }}" 
+                                <td><a href="{{ url('book_doctor_appointment/'.$item->id) }}" 
                                 class="btn btn-outline-success float-end"> <b>Appointment </a></td>
                                 
                             </tr>
