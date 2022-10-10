@@ -7,13 +7,13 @@
 <body>
   
 <div class="container">
-    <h1>Phone Number Verification </h1>
+    <h3 style="color: rgb(153, 0, 51)"><b>Phone Number Verification </h3>
   
     <div class="alert alert-danger" id="error" style="display: none;"></div>
   
     <div class="card">
       <div class="card-header">
-        Enter Phone Number
+        Enter Name & Phone Number
       </div>
       <div class="card-body">
   
@@ -23,12 +23,13 @@
         @csrf
             <label>Name:</label>
             <input type="text" id="name"  name="name" class="form-control" >
+            <br>
             <label>Phone Number:</label>
             <input type="text" id="number"  name="phone" class="form-control" >
             <br>
             <div id="recaptcha-container"></div>
             <br>
-            <button type="button" class="btn btn-warning" onclick="phoneSendAuth();">Send OTP Code</button>
+            <button type="button" class="btn btn-warning" onclick="phoneSendAuth();"><b>Send OTP Code</b></button>
         
       </div>
     </div>
@@ -44,9 +45,9 @@
         
             <input type="text" id="verificationCode" name="code" class="form-control">
             <br>
-            <button type="submit" class="btn btn-secondary" onclick="codeverify();">Verify code</button>
+            <button type="submit" class="btn btn-secondary" onclick="codeverify();"><b>Verify code</b></button>
             <br><br>
-            <a href="{{url('/main')}}" class="btn btn-danger">Emergency Login</a>
+            <a href="{{url('/main')}}" class="btn btn-danger"><b>Emergency Login</a>
   
         </form>
       </div>

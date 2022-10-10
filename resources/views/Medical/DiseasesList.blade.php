@@ -9,8 +9,8 @@
 
             <div class="card">
             <div class="card-header">
-                    <h4>
-                    <a href="{{ url('index_medis') }}" class="btn btn-outline-danger float-end">Medicines Lists</a>
+                    <h4 style="color:blue">
+                    <a href="{{ url('index_medis') }}" class="btn btn-outline-danger float-end"><b>Medicines Lists</a>
                      Medicines for Disease
                     </h4>
                 </div>
@@ -39,7 +39,7 @@
                         <br><br>
                         
                         <div class="card-footer">
-                        <button type="submit" class="btn btn-success">Save</button>
+                        <button type="submit" class="btn btn-success float-end"><b>Save</button>
                         </div>
                         </div>
 

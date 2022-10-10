@@ -122,6 +122,26 @@ class MedicalController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate(
+            [
+              'name'=>'required', 
+              'phone'=>'required',
+              'email'=>'required',
+              'department'=>'required',
+              'bio'=>'required', 
+              'joining_date'=>'required',
+              
+            ],
+            [
+              'name.required'=>'Please Enter a valid Name',
+              'phone.required'=>'Please Enter a valid phone',
+              'email.required'=>'Please Enter a valid email',
+              'department.required'=>'Please Enter a valid department',
+              'bio.required'=>'Please Enter a valid bio',
+              'joining_date.required'=>'Please Enter a valid joining date', 
+            ]
+          );
+
         $student = new Doctor;
         $student->name = $request->input('name');
         $student->phone = $request->input('phone');

@@ -5,8 +5,8 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Doctor's Information
-                        <a href="{{ url('add-doctors') }}" class="btn btn-outline-success float-end">Add Doctor</a>
+                    <h4 style="color: navy"> <b>Doctor's Information  </b>
+                        <a href="{{ url('add-doctors') }}" class="btn btn-outline-success float-end"> <b>Add Doctor</b></a>
                     </h4>
                 </div>
                 <div class="card-body">

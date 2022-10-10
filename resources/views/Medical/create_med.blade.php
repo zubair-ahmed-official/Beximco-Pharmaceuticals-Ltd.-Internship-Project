@@ -9,8 +9,8 @@
 
             <div class="card">
             <div class="card-header">
-                    <h4>
-                    <a href="{{ url('med') }}" class="btn btn-outline-danger float-end">Lists</a>
+                    <h4 style="color:navy">
+                    <a href="{{ url('med') }}" class="btn btn-outline-danger float-end"><b>Medicine Lists</a>
                     Add Medicine
                     </h4>
                 </div>

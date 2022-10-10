@@ -6,8 +6,8 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Disease's Information
-                        <a href="{{ url('add-dis') }}" class="btn btn-outline-success float-end">Add Disease</a>
+                    <h4> <b> Disease's Information </b>
+                        <a href="{{ url('add-dis') }}" class="btn btn-outline-success float-end"><b>Add Disease</b></a>
                     </h4>
                 </div>
 
@@ -29,8 +29,8 @@
                         <tbody>
                             @foreach ($dis as $item)
                             <tr>
-                                <td>{{ $item->id }}</td>
-                                <td>{{ $item->name }}</td>
+                                <td><b>{{ $item->id }}</td>
+                                <td><b>{{ $item->name }}</b></td>
                                 <td>{{ $item->medicine }}</td>
                                 <td>{{ $item->details }}</td>
                                 

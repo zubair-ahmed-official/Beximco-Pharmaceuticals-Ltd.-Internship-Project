@@ -61,8 +61,6 @@
                         </div>
                         <div class="form-group mb-3">
                             <p for="">Available Appointment Time: </b></p>
-                           
-                            
                             <input type="radio" value="{{$student->name}} Sunday 7pm" name="avt"> Sunday 7:00 pm &nbsp;&nbsp;
                             <input type="radio" value=" {{$student->name}} Sunday 7:30pm" name="avt"> Sunday 7:20 pm  &nbsp;&nbsp;
                             <br><input type="radio" value=" {{$student->name}} Sunday 7:30pm" name="avt"> Sunday 7:40 pm &nbsp;&nbsp;

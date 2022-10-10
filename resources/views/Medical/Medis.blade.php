@@ -9,8 +9,7 @@
 
             <div class="card">
             <div class="card-header">
-                   <h4>
-                   <b style="color:navy"> Medicines for Disease </b>
+                   <h4 style="color:navy"> Medicines for Disease 
                     <a href="{{ url('med') }}" class="btn btn-outline-danger float-end">Medicines Lists</a>
                     </h4>
               

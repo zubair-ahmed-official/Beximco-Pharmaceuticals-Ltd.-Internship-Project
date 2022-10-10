@@ -9,9 +9,9 @@
 
             <div class="card">
             <div class="card-header">
-                    <h4>
-                    <a href="{{ url('dis') }}" class="btn btn-outline-danger float-end">Lists</a>
-                    Add Disease
+                    <h4 style="color:purple">
+                    <a href="{{ url('dis') }}" class="btn btn-outline-danger float-end"><b>Disease Lists</b></a>
+                   <b> Add Disease </b>
                     </h4>
                 </div>
                 <div class="card-body">
@@ -20,7 +20,7 @@
                         @csrf
 
                         <div class="form-group mb-3">
-                            <label for="">Disease's Name</label>
+                            <label for=""><b>Disease's Name</label>
                             <input type="text" name="name" value="{{old('name')}}" class="form-control">
                             @error('name')
                             <span class="text-danger"> {{$message}} </span>
@@ -37,7 +37,7 @@
                             <label for="">Disease's Details</label>
                             <input type="text" name="details" value="{{old('details')}}" class="form-control">
                             @error('details')
-                            <span class="text-danger"> {{$message}} </span>
+                            <span class="text-danger"> {{$message}} </b></span>
                             @enderror
                         </div>
                         
@@ -45,7 +45,7 @@
                         <div>
                         <div class="form-group mb-3">
                         
-                        <button type="submit" class="btn btn-success">Save</button>
+                        <button type="submit" class="btn btn-success float-end"><b>Save</b></button>
                         </div>
 
                     </form>
