@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Doctor;
 use App\Models\Medicine;
 use App\Models\Disease;
-use App\Models\Medicines_Diseases;
+use App\Models\Medicines_Diseases; 
+use App\Models\Booked_Appointment;
+use App\Models\Doctor_appointment;
 use App\Models\Order; 
 use App\Models\Delivered_order;
 use Illuminate\Http\Request;
@@ -204,6 +206,31 @@ class MedicalController extends Controller
     {
         $student = Doctor::find($id);
         return view('Medical.Booking_DrAppointment', compact('student'));
+    }
+
+    public function store_doctor_appointment(Request $request)
+    {
+       
+
+        $da = new Doctor_appointment;
+        $da->cname = $request->input('cname');
+        $da->name = $request->input('name');
+        $da->phone = $request->input('phone');
+        $da->email = $request->input('email');
+        $da->department = $request->input('department');
+        $da->bio = $request->input('bio');
+        $da->no_of_people = $request->input('no_of_people');
+        $da->avt = $request->input('avt');
+
+        $ba = new Booked_Appointment;
+        $ba->cname = $request->input('cname');
+        $ba->name = $request->input('name');
+        $ba->avt = $request->input('avt');
+
+        $da->save();
+        $ba->save();
+        
+        return redirect()->back()->with('status','Appointment booked Successfully');
     }
 
     public function edit_med($id)

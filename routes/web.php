@@ -53,11 +53,13 @@ Route::get('main/successlogin', [PhoneAuthController::class,'successlogin']);
 
 
 Route::get('add-doctors', [MedicalController::class, 'create']);
-Route::post('add-doctors', [MedicalController::class, 'store']); //doctor_appointment
+Route::post('add-doctors', [MedicalController::class, 'store']);
 
-Route::get('doctor_appointment', [MedicalController::class, 'doctor_appointment']);
+Route::get('doctor_appointment', [MedicalController::class, 'doctor_appointment']); 
+
 
 Route::get('book_doctor_appointment/{id}', [MedicalController::class, 'book_doctor_appointment']);
+Route::post('book_doctor_appointment/{id}', [MedicalController::class, 'store_doctor_appointment']); 
 
 Route::get('doctors', [MedicalController::class, 'index']);
 Route::get('edit-doctors/{id}', [MedicalController::class, 'edit']);

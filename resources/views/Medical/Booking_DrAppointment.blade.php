@@ -23,7 +23,7 @@
 
                         <div class="form-group mb-3" hidden>
                             <label for="">Customer's Name:</label>
-                            <input type="text" name="name" value="{{$student->name}}" class="form-control" readonly>
+                            <input type="text" name="cname" value="{{session()->get('name')}}" class="form-control" readonly>
                         </div>
 
                         <div class="form-group mb-3">
@@ -49,7 +49,7 @@
                         <div class="form-group mb-3">
                            
                             <label for="">Number of People: </label>
-                            <select name="num" > 
+                            <select name="no_of_people" > 
                             <option selected disabled >--Number--</option>
                             <?php for($i=1;$i<=7;$i++)
                             if($i == true)
@@ -60,15 +60,21 @@
                             </select> 
                         </div>
                         <div class="form-group mb-3">
-                            <p for="">Doctor's Appointment Time: </b></p>
-                            <p for="">Saturday to Thursday</p>
-                            <p for="">10:30pm to 2:30pm</p>
-                            <p for="">6:30pm to 11:30pm</p>
+                            <p for="">Available Appointment Time: </b></p>
+                           
                             
+                            <input type="radio" value="{{$student->name}} Sunday 7pm" name="avt"> Sunday 7:00 pm &nbsp;&nbsp;
+                            <input type="radio" value=" {{$student->name}} Sunday 7:30pm" name="avt"> Sunday 7:20 pm  &nbsp;&nbsp;
+                            <br><input type="radio" value=" {{$student->name}} Sunday 7:30pm" name="avt"> Sunday 7:40 pm &nbsp;&nbsp;
+                            <input type="radio" value=" {{$student->name}} Sunday 7:30pm" name="avt"> Sunday 8:00 pm  &nbsp;&nbsp;  
+                            <br><input type="radio" value=" {{$student->name}} Sunday 7:30pm" name="avt"> Sunday 8:20 pm  &nbsp;&nbsp;
+                            <input type="radio" value=" {{$student->name}} Sunday 7:30pm" name="avt"> Sunday 8:40 pm &nbsp;&nbsp;
+                            <br><input type="radio" value=" {{$student->name}} Sunday 7:30pm" name="avt"> Sunday 9:00 pm   &nbsp;&nbsp;   
+                            <input type="radio" value=" {{$student->name}} Sunday 7:30pm" name="avt"> Sunday 9:20 pm  &nbsp;&nbsp;
+                            <br><input type="radio" value=" {{$student->name}} Sunday 7:30pm" name="avt"> Sunday 9:40 pm &nbsp;&nbsp;
+                            <input type="radio" value=" {{$student->name}} Sunday 7:30pm" name="avt"> Sunday 10:00 pm                            
                         </div>
 
-                        
-                        
                         <div class="form-group mb-3">
                             <button type="submit" class="btn btn-outline-primary float-end"><b>Book Doctor's Appointment</b></button>
                         </div>
