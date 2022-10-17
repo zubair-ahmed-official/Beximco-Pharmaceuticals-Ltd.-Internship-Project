@@ -38,6 +38,7 @@ class MedicalController extends Controller
         //return redirect()->route('cust_med')->compact('cust_med');
         return view('Medical.Cust_Med_Index', compact('cust_med'));
     }
+    
     public function cust_index_medis()
     {
         $dis = Disease::all();
@@ -138,7 +139,7 @@ class MedicalController extends Controller
               'email.required'=>'Please Enter a valid email',
               'department.required'=>'Please Enter a valid department',
               'bio.required'=>'Please Enter a valid bio',
-              'joining_date.required'=>'Please Enter a valid joining date', 
+              'joining_date.required'=>'Please Enter a valid joining date',
             ]
           );
 
@@ -336,6 +337,7 @@ class MedicalController extends Controller
         $request->validate(
             [
               'cname'=>'required', 
+              'email'=>'required', 
               'address'=>'required',
               'phone'=>'required',
               'name'=>'required', 
@@ -358,7 +360,9 @@ class MedicalController extends Controller
 
        
         $med = new Order;
+       
         $med->cname = $request->input('cname');
+        $med->email = $request->input('email');
         $med->address = $request->input('address');
         $med->phone = $request->input('phone');
         $med->name = $request->input('name');
@@ -369,7 +373,18 @@ class MedicalController extends Controller
         $med->tprice = $med->price * $med->num;
         $med->payment = $request->input('payment');
         $med->save();
-        return redirect()->back()->with('status','Medicines Ordered Successfully');
+
+        $user = OTP:: where('email',$request->email)-> where('code',$request->code)->first();
+        if($user == true)
+        {
+            session()->put('email',$user->email);
+            $Name = $request->session()->get('email');
+            $uname = Register :: all()->where('email',$Name);                                                
+            
+        // return view('Medical.Customers_panel')->with('uname',$uname);
+        }
+
+        return redirect()->back()->with('status','Medicines Ordered Successfully')->with('uname',$uname);
     }
 
     public function update_dis(Request $request, $id)

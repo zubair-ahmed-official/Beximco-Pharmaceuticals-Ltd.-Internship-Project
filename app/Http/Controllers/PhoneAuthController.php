@@ -45,7 +45,7 @@ class PhoneAuthController extends Controller
           [
             'name'=>'required', 
             'code'=>'required|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/',
-            'email'=>'required|email',
+            'email'=>'required|email|unique:register',
             'phone'=>'required|min:11|max:11',
             'nid'=>'required', 
             'address'=>'required',
@@ -58,6 +58,7 @@ class PhoneAuthController extends Controller
             'code.required'=>'Please Enter a valid code',
             'code.regex'=>'Password condition doesn\'t match',
             'email.required'=>'Please Enter a valid email',
+            'email.unique'=>'This email is already in use',
             'phone.required'=>'Please Enter a valid phone',
             'phone.min'=>'Invalid phone number',
             'phone.max'=>'Invalid phone number',
@@ -81,6 +82,7 @@ class PhoneAuthController extends Controller
         
         $otp = new OTP;
         $otp->name = $request->input('name');
+        $otp->email = $request->input('email');
         $otp->phone = $request->input('phone');
         $otp->code = $request->input('code');
 
@@ -96,6 +98,7 @@ class PhoneAuthController extends Controller
     {
         $otp = new OTP;
         $otp->name = $request->input('name');
+        $otp->email = $request->input('email');
         $otp->phone = $request->input('phone');
         $otp->code = $request->input('code');
         
@@ -113,24 +116,30 @@ class PhoneAuthController extends Controller
       //return $request;
       $request->validate(
         [
-          'name'=>'required|exists:otp_table,name',
+          'email'=>'required|exists:otp_table,email',
           'code'=>'required|exists:otp_table,code'
         ],
         [
-          'name.required'=>'Please enter a valid Name',
+          'email.required'=>'Please enter a valid email',
           'code.required'=>'Please enter valid Password/OTP',
-          'name.exists'=>'Name does not exist',
+          'email.exists'=>'Email does not exist',
           'code.exists'=>'Password/OTP Code does not exist'
         ]
       );
-      $user = OTP:: where('name',$request->name)-> where('code',$request->code)->first();
+      $user = OTP:: where('email',$request->email)-> where('code',$request->code)->first();
       if($user == true)
       {
-        session()->put('name',$user->name);
+        session()->put('email',$user->email);
         //session()->flash('status','Login Successful');
-        return view('Medical.Customers_panel');
+        //return view('Medical.Customers_panel');
         //return redirect()->route('Medical.Customers_panel');
+      
+        $Name = $request->session()->get('email');
+        $uname = Register :: all()->where('email',$Name);                                                
+        
+        return view('Medical.Customers_panel')->with('uname',$uname);
       }
+    
     }
 
     public function logout()
@@ -257,12 +266,12 @@ class PhoneAuthController extends Controller
 
     public function My_Orders(Request $request)
     {			
-    if($request->session()->has('name'))
+    if($request->session()->has('email'))
     {
       //echo $request->session()->get('name');
-      $Name = $request->session()->get('name');
-      $user = Order :: all()->where('cname',$Name);                         
-      $del = Delivered_order :: all()->where('cname',$Name);                           
+      $Name = $request->session()->get('email');
+      $user = Order :: all()->where('email',$Name);                         
+      $del = Delivered_order :: all()->where('email',$Name);                           
       return view('Medical.My_Orders')->with('user',$user)->with('del',$del);
     }
     else
@@ -274,11 +283,11 @@ class PhoneAuthController extends Controller
     
     public function profile(Request $request)
     {			
-    if($request->session()->has('name'))
+    if($request->session()->has('email'))
     {
       //echo $request->session()->get('name');
-      $Name = $request->session()->get('name');
-      $user = Register :: all()->where('name',$Name);                                                
+      $Name = $request->session()->get('email');
+      $user = Register :: all()->where('email',$Name);                                                
       return view('Medical.profile')->with('user',$user);
     }
     else
@@ -286,5 +295,6 @@ class PhoneAuthController extends Controller
       //$Name = Str::ucfirst($Name);
     
     }
+   
 
 }

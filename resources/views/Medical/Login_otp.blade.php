@@ -47,9 +47,9 @@ integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg
 					<tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
 					<tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
 					
-					<tr> <td align="right"><b> User Name: </td>
-						<td align="center"><input name="name"  placeholder="Username" type="text"><br>
-                        @error('name')
+					<tr> <td align="right"><b> E-Mail: </td>
+						<td align="center"><input name="email"  placeholder="E-mail" type="text"><br>
+                        @error('email')
                             <span class="text-danger"> {{$message}} </span>
                         @enderror
                     </td>

@@ -4,7 +4,16 @@
 	<body>
 	<br>
 	<div >
-	<h2 style="color:green" align="center"><b>Welcome <a href ="{{url('profile')}}" style="text-decoration:none; color:green">{{Session::get('name')}}</a></h2><br>
+	<!--<h2 style="color:green" align="center"><b>Welcome <a href ="{{url('profile')}}" style="text-decoration:none; color:green">{{Session::get('email')}}</a></h2><br>
+-->
+	
+	<h2 style="color:green" align="center">Welcome <a href ="{{url('profile')}}" style="text-decoration:none; color:green">
+	@foreach ($uname as $item)
+	{{ $item->name }}
+	@endforeach
+	</a></h2>
+	<br>
+
 	<h3 style="color: brown" align="center"><b>Customers Panel</h3>
 	<br>
 	<table align="center" class="container table table-striped"  border="4">

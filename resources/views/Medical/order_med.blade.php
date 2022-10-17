@@ -23,11 +23,24 @@
 
                         <div class="form-group mb-3">
                             <label for=""><b>Customer's Name:</b></label>
-                            <input type="text" name="cname" value="{{session()->get('name')}}" class="form-control" readonly>
+                            
+                            <input type="text" name="cname" value="
+                            @foreach ($uname as $item)
+                            {{ $item->name }} 
+                            @endforeach" class="form-control" >
                             @error('cname')
                             <span class="text-danger"><b> {{$message}} </b></span>
                             @enderror
                         </div>
+
+                        <div class="form-group mb-3">
+                            <label for=""><b>Customer's E-mail:</b></label>
+                            <input type="text" name="email" value="{{session()->get('email')}}" class="form-control" readonly>
+                            @error('email')
+                            <span class="text-danger"><b> {{$message}} </b></span>
+                            @enderror
+                        </div>
+
 
                         <div class="form-group mb-3">
                             <label for=""><b>Customer's Address:</b></label>

@@ -22,7 +22,7 @@ integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg
 			<td align="right">
 				<a style="font-size: 85%;" href="" class="btn btn-outline-success"><b>HOME</a>
 				&nbsp;&nbsp;
-				@if(Session::has('name'))<a href="{{route('logout')}}" style="font-size: 85%;" class="btn btn-outline-danger">
+				@if(Session::has('email'))<a href="{{route('logout')}}" style="font-size: 85%;" class="btn btn-outline-danger">
 				<b>LOGOUT</a>@endif
 				&nbsp;&nbsp;
 			</td>

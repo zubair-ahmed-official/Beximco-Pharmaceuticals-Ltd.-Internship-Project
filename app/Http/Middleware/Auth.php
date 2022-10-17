@@ -16,7 +16,7 @@ class Auth
      */
     public function handle(Request $request, Closure $next)
     {
-        if($request->session()->has('name'))
+        if($request->session()->has('email'))
             return $next($request);
         else
             return redirect()->route('login_otp');
