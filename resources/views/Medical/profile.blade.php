@@ -10,13 +10,13 @@
                 </div>
                 <div class="card-body">
 
-                    <table class="table table-bordered fs-5" >
+                    <table class="table table-bordered fs-6" >
                         
                         <tbody>
                             @foreach ($user as $item)
                             
                                <tr><th>Customer's Name</th> <td><b>{{ $item->name }}</b></td>  
-                               <td rowspan="3">
+                               <td rowspan="4">
                                 <img src="{{ url('public/Image/'.$item->image) }}"
                                     style="height: 175px; width: 160px; background-color: white">
                                 </td> </tr>                     
