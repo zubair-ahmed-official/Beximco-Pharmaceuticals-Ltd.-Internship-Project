@@ -24,10 +24,7 @@
                         <div class="form-group mb-3">
                             <label for=""><b>Customer's Name:</b></label>
                             
-                            <input type="text" name="cname" value="
-                            @foreach ($uname as $item)
-                            {{ $item->name }} 
-                            @endforeach" class="form-control" >
+                            <input type="text" name="cname" value="" class="form-control" >
                             @error('cname')
                             <span class="text-danger"><b> {{$message}} </b></span>
                             @enderror

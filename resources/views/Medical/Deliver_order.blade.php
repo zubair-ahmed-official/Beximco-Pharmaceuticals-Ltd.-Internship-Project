@@ -34,6 +34,11 @@
                             <label for=""><b>Customer's phone:</b></label>
                             <input type="text" name="phone" value="{{$order_med->phone}}" class="form-control" readonly>
                         </div>
+
+                        <div class="form-group mb-3">
+                            <label for=""><b>Customer's Email:</b></label>
+                            <input type="text" name="email" value="{{$order_med->email}}" class="form-control" readonly>
+                        </div>
                         
                         <div class="form-group mb-3">
                             <label for=""><b>Medicine's Name:</b></label>
@@ -43,10 +48,7 @@
                             <label for=""><b>Medicine's Disease:</b></label>
                             <input type="text" name="disease" value="{{$order_med->disease}}" class="form-control" readonly>
                         </div>
-                        <div class="form-group mb-3">
-                            <label for=""><b>Medicine's Details:</b></label>
-                            <label>{{$order_med->details}}</label>
-                        </div>
+                        
                         <div class="form-group mb-3">
                             <label for=""><b>Medicine's Price:</b></label>
                             <input type="text" name="price" value="{{$order_med->price}}" class="form-control" readonly>

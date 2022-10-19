@@ -24,7 +24,7 @@
                 </div>
                 <div class="card-body">
 
-                    <form action="{{ url('/register') }}" method="POST">
+                    <form action="{{ url('/register') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group mb-3">
@@ -97,14 +97,24 @@
                             @enderror
                         </div>
 						<div class="form-group mb-3">
-                            <label for="">Educational Background</b></label>
+                            <label for="">Educational Background</label>
                             <input type="text" name="edu" value="{{old('edu')}}" class="form-control">
                             @error('edu')
                             <span class="text-danger"><b> {{$message}} </span>
                             @enderror
                         </div>
+
                         <div class="form-group mb-3">
-                       
+
+                        <div class="image">
+                        <label>Add image</b></label>
+                        <input type="file" class="form-control" required name="image">
+                        </div>
+                        <br>
+                        <div class="post_button" align= "right">
+                        <button type="submit" class="btn btn-success">Add Image</button>
+                        </div>
+                        <br>
                         <div align= "right">
                         <button type="submit" class="btn btn-outline-success"><b>Register</button>
                         
@@ -112,6 +122,12 @@
                         <br>
                         
                     </form>
+
+                    <form method="post" action="{{ route('Medical.store') }}" 
+                        enctype="multipart/form-data">
+                    @csrf
+                    
+                </form>
 
                     <div align= "right">
                     <a href ="/main"><input type="button" class="btn btn-info" value="Login"></a>

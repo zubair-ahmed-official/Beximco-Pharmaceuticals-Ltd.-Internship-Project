@@ -18,7 +18,8 @@ class Register extends Model
         'address',
         'gender',
         'age',
-        'edu'
+        'edu',
+        'image'
 
     ];
 }

@@ -16,6 +16,7 @@
                                 <th>Customer's Name</th>
                                 <th>Address</th>
                                 <th>Phone</th> 
+                                <th>Email</th> 
                                 <th>Medicine</th>
                                 <th>Price(BDT)</th>
                                 <th>Disease</th>
@@ -31,6 +32,7 @@
                                 <td><b>{{ $item->cname }}</b></td>
                                 <td>{{ $item->address }}</td>
                                 <td>{{ $item->phone }}</td>
+                                <td>{{ $item->email }}</td>
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->price }} BDT</td>
                                 <td>{{ $item->disease }}</td>
@@ -68,6 +70,7 @@
                                 <th>Customer's Name</th>
                                 <th>Address</th>
                                 <th>Phone</th> 
+                                <th>Email</th> 
                                 <th>Medicine</th>
                                 <th>Price(BDT)</th>
                                 <th>Disease</th>
@@ -83,6 +86,7 @@
                                 <td><b>{{ $item->cname }}</b></td>
                                 <td>{{ $item->address }}</td>
                                 <td>{{ $item->phone }}</td>
+                                <td>{{ $item->email }}</td>
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->price }} BDT</td>
                                 <td>{{ $item->disease }}</td>

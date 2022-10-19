@@ -17,6 +17,7 @@ use App\Models\Disease;
 use App\Models\Doctor;
 use App\Models\Order;
 use App\Models\Delivered_order;
+use App\Models\Postimage;
 use Illuminate\Support\Str;
 
 
@@ -80,11 +81,24 @@ class PhoneAuthController extends Controller
         $reg->age = $request->input('age');
         $reg->edu = $request->input('edu');
         
+        if($request->file('image'))
+        {
+            $file= $request->file('image');
+            $filename= date('YmdHi').$file->getClientOriginalName();
+            $file-> move(public_path('public/Image'), $filename);
+            $reg['image']= $filename;
+        }
+
         $otp = new OTP;
         $otp->name = $request->input('name');
         $otp->email = $request->input('email');
         $otp->phone = $request->input('phone');
         $otp->code = $request->input('code');
+
+        //$data= new Postimage();
+
+        
+        //$data->save();
 
         $reg->save();
         
@@ -295,6 +309,7 @@ class PhoneAuthController extends Controller
       //$Name = Str::ucfirst($Name);
     
     }
+    
    
 
 }

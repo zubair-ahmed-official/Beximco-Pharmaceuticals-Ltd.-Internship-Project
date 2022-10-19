@@ -232,7 +232,6 @@ class MedicalController extends Controller
     public function store_doctor_appointment(Request $request)
     {
        
-
         $da = new Doctor_appointment;
         $da->cname = $request->input('cname');
         $da->name = $request->input('name');
@@ -309,6 +308,7 @@ class MedicalController extends Controller
         $med->cname = $request->input('cname');
         $med->address = $request->input('address');
         $med->phone = $request->input('phone');
+        $med->email = $request->input('email');
         $med->name = $request->input('name');
         $med->disease = $request->input('disease');
         //$med->details = $request->input('details');
@@ -374,17 +374,8 @@ class MedicalController extends Controller
         $med->payment = $request->input('payment');
         $med->save();
 
-        $user = OTP:: where('email',$request->email)-> where('code',$request->code)->first();
-        if($user == true)
-        {
-            session()->put('email',$user->email);
-            $Name = $request->session()->get('email');
-            $uname = Register :: all()->where('email',$Name);                                                
-            
-        // return view('Medical.Customers_panel')->with('uname',$uname);
-        }
 
-        return redirect()->back()->with('status','Medicines Ordered Successfully')->with('uname',$uname);
+        return redirect()->back()->with('status','Medicines Ordered Successfully');
     }
 
     public function update_dis(Request $request, $id)

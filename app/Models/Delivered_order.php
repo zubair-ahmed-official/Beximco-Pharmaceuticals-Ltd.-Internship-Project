@@ -12,6 +12,7 @@ class Delivered_order extends Model
         'cname',
         'address',
         'phone',
+        'email',
         'name',
         'disease',
         'details',

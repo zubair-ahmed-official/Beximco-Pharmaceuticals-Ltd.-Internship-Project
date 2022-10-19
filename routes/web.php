@@ -16,8 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\MedicalController;
 use App\Http\Controllers\PhoneAuthController;
-//use App\Http\Controllers\NexmoSMSController;
+//use App\Http\Controllers\NexmoSMSController; 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ImageUploadController;
 
 
 //Route::get('sendSMS', [NexmoSMSController::class, 'index']);
@@ -119,3 +120,12 @@ Route::get('/My_Orders',[PhoneAuthController::class, 'My_Orders'])->name('My_Ord
 Route::get('profile', [PhoneAuthController::class, 'profile'])->middleware('Auth');
 
 //Route::get('/search_result', [PhoneAuthController::class, 'search_result']);
+
+Route::get('/add-image',[ImageUploadController::class,'addImage'])->name('Medical.add');
+
+//For storing an image
+Route::post('/store-image',[ImageUploadController::class,'storeImage'])->name('Medical.store');
+
+//For showing an image
+Route::get('/view-image',[ImageUploadController::class,'viewImage'])->name('Medical.view');
+Route::get('delete-pics/{id}', [ImageUploadController::class, 'destroyImage']);
