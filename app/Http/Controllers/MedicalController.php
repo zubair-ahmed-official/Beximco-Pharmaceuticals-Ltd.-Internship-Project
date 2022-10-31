@@ -296,6 +296,11 @@ class MedicalController extends Controller
         return view('Medical.order_med', compact('order_med'));
     } 
 
+    public function again_ordering_med($email)
+    {
+        $again_order_med = Delivered_order::find($email);
+        return view('Medical.Order_Again', compact('again_order_med'));
+    } 
     public function delivering_order($id)
     {
         $order_med = Order::find($id);
@@ -333,6 +338,52 @@ class MedicalController extends Controller
     }
 
     public function order_med(Request $request, $id)
+    {
+        $request->validate(
+            [
+              'cname'=>'required', 
+              'email'=>'required', 
+              'address'=>'required',
+              'phone'=>'required',
+              'name'=>'required', 
+              'disease'=>'required',
+              'price'=>'required|regex:/^[0-9]+$/',
+              'num'=>'required',
+              'payment'=>'required'
+            ],
+            [
+              'cname.required'=>'Please Enter your Name', 
+              'address.required'=>'Please Enter your Address',
+              'phone.required'=>'Please Enter your Phone',
+              'name.required'=>'Please Enter a valid Name',
+              'disease.required'=>'Please Enter a valid Disease',
+              'price.required'=>'Please Enter a valid Price',
+              'price.regex'=>'Please Enter a Numeric Price',
+              'payment.required'=>'Please Enter a payment method'
+            ]
+          );
+
+       
+        $med = new Order;
+       
+        $med->cname = $request->input('cname');
+        $med->email = $request->input('email');
+        $med->address = $request->input('address');
+        $med->phone = $request->input('phone');
+        $med->name = $request->input('name');
+        $med->disease = $request->input('disease');
+        //$med->details = $request->input('details');
+        $med->price = $request->input('price');
+        $med->num = $request->input('num');
+        $med->tprice = $med->price * $med->num;
+        $med->payment = $request->input('payment');
+        $med->save();
+
+
+        return redirect()->back()->with('status','Medicines Ordered Successfully');
+    }
+
+    public function again_order_med(Request $request, $id)
     {
         $request->validate(
             [

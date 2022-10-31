@@ -107,6 +107,52 @@ class PhoneAuthController extends Controller
 
         //return redirect()->back()->with('status','OTP Information saved Successfully');
     }
+    public function edit_profile($id)
+    {
+        $reg = Register::find($id);
+        return view('Medical.update_profile', compact('reg'));
+    }
+
+    public function update_profile(Request $request, $email)
+    {
+        
+        $reg = Register::find($email);
+        $reg->name = $request->input('name');
+        //$reg->email = $request->input('email');
+        $reg->phone = $request->input('phone');
+        $reg->nid = $request->input('nid');
+        $reg->address = $request->input('address');
+        $reg->gender = $request->input('gender');
+        $reg->age = $request->input('age');
+        $reg->edu = $request->input('edu');
+
+        
+       /* $otp = OTP::find($email);
+        $otp->name = $request->input('name');
+        $otp->email = $request->input('email');
+        $otp->phone = $request->input('phone');
+        */
+
+        $reg->update();
+        
+        //$otp->update();
+       
+      session()->flush();
+      return redirect()->route('login_otp')->with('status','Profile Information Updated Successfully. Please, Login again to see the updated profile.');
+
+        //return redirect()->back()->with('status','OTP Information saved Successfully');
+    }
+
+    /*public function deleteImage(Request $request,$id) 
+    {
+      $data = Register::find($id);
+        $image_path = public_path('public/Image').'/'.$data->image;
+        unlink($image_path);
+        $data->delete();
+
+      return back()->with("success", "Image deleted successfully.");
+
+    }*/
 
     public function otp_store(Request $request)
     {

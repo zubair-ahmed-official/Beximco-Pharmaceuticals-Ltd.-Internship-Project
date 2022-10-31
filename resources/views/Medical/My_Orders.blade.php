@@ -93,7 +93,7 @@
                                 <td>{{ $item->num }}</td>
                                 <td>{{ $item->tprice }} BDT</td>
                                 <td>{{ $item->payment }} </td>
-                                
+                                <td><a href="{{ url('again_order_med/'.$item->id) }}" style="text-decoration:none; color:green"><b>Order Again</a></td>
                             </tr>
                             @endforeach
                         </tbody>

@@ -111,10 +111,6 @@
                         <input type="file" class="form-control" required name="image">
                         </div>
                         <br>
-                        <div class="post_button" align= "right">
-                        <button type="submit" class="btn btn-success">Add Image</button>
-                        </div>
-                        <br>
                         <div align= "right">
                         <button type="submit" class="btn btn-outline-success"><b>Register</button>
                         

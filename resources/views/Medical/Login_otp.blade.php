@@ -12,6 +12,7 @@ integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg
 <html>
 <div class="container">
     <div class="row justify-content-center">
+		<br>
         <div class="col-md-6">
 
             @if (session('status'))
@@ -48,7 +49,7 @@ integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg
 					<tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
 					
 					<tr> <td align="right"><b> E-Mail: </td>
-						<td align="center"><input name="email"  placeholder="E-mail" type="text"><br>
+						<td align="center"><input name="email" value="{{old('email')}}"  placeholder="E-mail" type="text"><br>
                         @error('email')
                             <span class="text-danger"> {{$message}} </span>
                         @enderror

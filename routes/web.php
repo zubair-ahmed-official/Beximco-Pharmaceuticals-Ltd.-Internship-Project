@@ -84,6 +84,10 @@ Route::get('delete-med/{id}', [MedicalController::class, 'destroy_med']);
 Route::get('order-med/{id}', [MedicalController::class, 'ordering_med'])->middleware('Auth');
 Route::post('order-med/{id}', [MedicalController::class, 'order_med'])->middleware('Auth');
 
+Route::get('again_order_med/{id}', [MedicalController::class, 'again_ordering_med'])->middleware('Auth');
+Route::post('again_order_med/{id}', [MedicalController::class, 'again_order_med'])->middleware('Auth');
+
+
 Route::get('index_orders', [MedicalController::class, 'index_orders']); //deliver-order Deliver_index
 
 Route::get('deliver_index', [MedicalController::class, 'deliver_index']);
@@ -118,8 +122,12 @@ Route::post('/search_result',[PhoneAuthController::class, 'findSearch'])->name('
 Route::get('/My_Orders',[PhoneAuthController::class, 'My_Orders'])->name('My_Orders')->middleware('Auth');
 
 Route::get('profile', [PhoneAuthController::class, 'profile'])->middleware('Auth');
+Route::get('e-profile/{id}', [PhoneAuthController::class, 'edit_profile'])->middleware('Auth');
+Route::put('edit-profile/{id}', [PhoneAuthController::class, 'update_profile'])->middleware('Auth');
 
-//Route::get('/search_result', [PhoneAuthController::class, 'search_result']);
+//Route::get("delete", [PhoneAuthController::class, "deleteImage"]);
+
+//Route::get('/search_result', [PhoneAuthController::class, 'search_result']); 
 
 Route::get('/add-image',[ImageUploadController::class,'addImage'])->name('Medical.add');
 

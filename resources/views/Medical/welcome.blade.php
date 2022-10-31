@@ -24,6 +24,9 @@
             <label>Name:</label>
             <input type="text" id="name"  name="name" class="form-control" >
             <br>
+            <label>E-Mail:</label>
+            <input type="text" id="email"  name="email" class="form-control" >
+            <br>
             <label>Phone Number:</label>
             <input type="text" id="number"  name="phone" class="form-control" >
             <br>

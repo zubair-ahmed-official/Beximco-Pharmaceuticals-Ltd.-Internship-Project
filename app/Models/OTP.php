@@ -11,6 +11,7 @@ class OTP extends Model
     protected $table ='otp_table';
     protected $fillable = [
         'name',
+        'email',
         'phone',
         'code'
     ];

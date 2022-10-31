@@ -21,13 +21,13 @@
                         @csrf
                         @method('POST')
 
-                        <div class="form-group mb-3" hidden>
-                            <label for="">Customer's Name:</label>
-                            <input type="text" name="cname" value="{{session()->get('name')}}" class="form-control" readonly>
+                        <div class="form-group mb-3">
+                            <label for=""><b>Patient's Name:</label>
+                            <input type="text" name="cname" class="form-control">
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for=""><b>Doctor's Name:</label>
+                            <label for="">Doctor's Name:</label>
                             <input type="text" name="name" value="{{$student->name}}" class="form-control" readonly>
                         </div>
                         <div class="form-group mb-3">

@@ -33,10 +33,16 @@ integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amn
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<a style="font-size: 85%; text-decoration:none" href=""><b>CONTACT US</b></a>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                
+				@if(Session::has('email'))<a href="{{route('logout')}}" style="font-size: 85%;" class="btn btn-outline-danger">
+				<b>LOGOUT</a>
+				&nbsp;&nbsp;
+                @else
                 &nbsp;&nbsp;<a style="font-size: 85%;" href="" class="btn btn-outline-success" data-toggle="modal" data-target="#myModal">
                 <b>LOGIN</b></a>&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                @endif
                 
 			</td>
 		</tr>
