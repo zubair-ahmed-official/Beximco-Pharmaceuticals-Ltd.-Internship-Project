@@ -9,10 +9,10 @@
 
             <div class="card">
             <div class="card-header">
-                    <h4 style="color:navy">
-                    <a href="{{ url('med') }}" class="btn btn-outline-danger float-end"><b>Medicine Lists</a>
+                    <h4 style="color:navy"><b>
+                    <a href="{{ url('med') }}" class="btn btn-outline-danger float-end"><b>Medicine Lists</b></a>
                     Add Medicine
-                    </h4>
+                </b></h4>
                 </div>
                 <div class="card-body">
 
@@ -20,14 +20,14 @@
                         @csrf
 
                         <div class="form-group mb-3">
-                            <label for="">Medicine's Name</label>
+                            <label for=""><b>Medicine's Name</label>
                             <input type="text" name="name" value="{{old('name')}}" class="form-control">
                             @error('name')
                             <span class="text-danger"> {{$message}} </span>
                             @enderror
                         </div>
                         <div class="form-group mb-3">
-                            <label for="">Medicine's Disease</label>
+                            <label for="">Medicine for the Diseases</label>
                             <input type="text" name="disease" value="{{old('disease')}}" class="form-control">
                             @error('disease')
                             <span class="text-danger"> {{$message}} </span>
@@ -41,8 +41,16 @@
                             @enderror
                         </div>
                         <div class="form-group mb-3">
-                            <label for="">Medicine's Price</label>
-                            <input type="text" name="price" value="{{old('price')}}" class="form-control">
+                            <label for="">Discount (%)</label>
+                            <input type="number" name="discount" value="{{old('discount')}}" class="form-control">
+                            @error('discount')
+                            <span class="text-danger"> {{$message}} </span>
+                            @enderror
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="">Medicine's Actual Price (BDT)</label>
+                            <input type="number" name="price" value="{{old('price')}}" class="form-control" 
+                            placeholder="Price Without Discount">
                             @error('price')
                             <span class="text-danger"> {{$message}} </span>
                             @enderror
@@ -50,9 +58,9 @@
                         
                         
                         <div>
-                        <div class="form-group mb-3">
+                        <div class="form-group mb-3 float-end">
                         
-                        <button type="submit" class="btn btn-success">Save</button>
+                        <button type="submit" class="btn btn-success"><b>Save</button>
                         </div>
 
                     </form>

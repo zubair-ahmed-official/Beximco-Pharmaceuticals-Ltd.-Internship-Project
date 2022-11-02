@@ -161,12 +161,14 @@ class MedicalController extends Controller
               'name'=>'required', 
               'disease'=>'required',
               'details'=>'required',
+              'discount'=>'required',
               'price'=>'required|regex:/^[0-9]+$/',
             ],
             [
               'name.required'=>'Please Enter a valid Name',
               'disease.required'=>'Please Enter a valid Disease',
               'details.required'=>'Please Enter a valid Details',
+              'discount.required'=>'Please Enter a valid discount',
               'price.required'=>'Please Enter a valid Price',
               'price.regex'=>'Please Enter a Numeric Price',
             ]
@@ -176,7 +178,10 @@ class MedicalController extends Controller
         $med->name = $request->input('name');
         $med->disease = $request->input('disease');
         $med->details = $request->input('details');
-        $med->price = $request->input('price');
+        $med->discount = $request->input('discount');
+        $med_discount = $med->discount*0.01;
+        $med->price = $request->input('price') - ($request->input('price') * $med_discount);
+        
         
         $med->save();
         return redirect()->back()->with('status','Medicine Information Added Successfully');
@@ -280,11 +285,31 @@ class MedicalController extends Controller
 
     public function update_med(Request $request, $id)
     {
+        $request->validate(
+            [
+              'name'=>'required', 
+              'disease'=>'required',
+              'details'=>'required',
+              'discount'=>'required',
+              'price'=>'required|regex:/^[0-9]+$/',
+            ],
+            [
+              'name.required'=>'Please Enter a valid Name',
+              'disease.required'=>'Please Enter a valid Disease',
+              'details.required'=>'Please Enter a valid Details',
+              'discount.required'=>'Please Enter a valid discount',
+              'price.required'=>'Please Enter a valid Price',
+              'price.regex'=>'Please Enter a Numeric Price',
+            ]
+          );
+
         $med = Medicine::find($id);
         $med->name = $request->input('name');
         $med->disease = $request->input('disease');
         $med->details = $request->input('details');
-        $med->price = $request->input('price');
+        $med->discount = $request->input('discount');
+        $med_discount = $med->discount * 0.01;
+        $med->price = $request->input('price') - ($request->input('price') * $med_discount);
        
         $med->update();
         return redirect()->back()->with('status','Medicines Information Updated Successfully');

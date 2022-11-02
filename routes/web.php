@@ -137,3 +137,6 @@ Route::post('/store-image',[ImageUploadController::class,'storeImage'])->name('M
 //For showing an image
 Route::get('/view-image',[ImageUploadController::class,'viewImage'])->name('Medical.view');
 Route::get('delete-pics/{id}', [ImageUploadController::class, 'destroyImage']);
+
+//Route::get('yourmethod', 'YourController@yourmethod')->name('yourmethod'); 
+Route::get('yourmethod', [PhoneAuthController::class, 'yourmethod'])->name('Medical.yourmethod');

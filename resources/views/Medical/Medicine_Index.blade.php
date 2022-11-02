@@ -5,8 +5,8 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Medicine's Information
-                        <a href="{{ url('add-med') }}" class="btn btn-outline-success float-end">Add Medicine</a>
+                    <h4><b>Medicine's Information
+                        <a href="{{ url('add-med') }}" class="btn btn-outline-success float-end"><b>Add Medicine</a>
                     </h4>
                 </div>
                 <div class="card-body">
@@ -18,6 +18,7 @@
                                 <th>Name</th>
                                 <th>Disease</th>
                                 <th>Details</th>
+                                <th>Discount</th>
                                 <th>Price(BDT)</th>
                                 <th>Edit</th>
                                 <th>Delete</th>
@@ -26,15 +27,16 @@
                         <tbody>
                             @foreach ($med as $item)
                             <tr>
-                                <td>{{ $item->id }}</td>
-                                <td>{{ $item->name }}</td>
+                                <td><b>{{ $item->id }}</td>
+                                <td><b>{{ $item->name }}</b></td>
                                 <td>{{ $item->disease }}</td>
                                 <td>{{ $item->details }}</td>
-                                <td>{{ $item->price }} BDT</td>
+                                <td style="color:brown"><b>{{ $item->discount }} %</td>
+                                <td><b>{{ $item->price }} BDT</td>
                                 <td>
-                                    <a href="{{ url('edit-med/'.$item->id) }}" class="btn btn-primary btn-sm">Edit</a>
+                                   <b> <a href="{{ url('edit-med/'.$item->id) }}" class="btn btn-primary btn-sm"><b>Edit</a>
                                     <td>
-                                    <a href="{{ url('delete-med/'.$item->id) }}" class="btn btn-danger btn-sm">Delete</a>
+                                    <a href="{{ url('delete-med/'.$item->id) }}" class="btn btn-danger btn-sm"><b>Delete</a>
                                     </td>                            
                                 </td>
                             </tr>

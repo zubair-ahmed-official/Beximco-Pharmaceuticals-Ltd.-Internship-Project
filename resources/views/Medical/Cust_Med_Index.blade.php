@@ -18,6 +18,7 @@
                                 <th>Name</th>
                                 <th>Disease</th>
                                 <th>Details</th>
+                                <th>Discount</th>
                                 <th>Price(BDT) </th>
                                
                             </tr>
@@ -29,6 +30,7 @@
                                 <td><b>{{ $item->name }}</td>
                                 <td>{{ $item->disease }}</td>
                                 <td>{{ $item->details }}</td>
+                                <td style="color:brown"><b>{{ $item->discount }} %</td>
                                 <td><b>{{ $item->price }} BDT</td>
                                 <td>
                                     <a href="{{ url('order-med/'.$item->id) }}" class="btn btn-outline-success btn-sm"><b> Order </a>
