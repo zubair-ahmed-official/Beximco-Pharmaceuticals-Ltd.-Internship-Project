@@ -246,11 +246,19 @@ class MedicalController extends Controller
         $da->bio = $request->input('bio');
         $da->no_of_people = $request->input('no_of_people');
         $da->avt = $request->input('avt');
+        $da->doctors_payment = $request->input('doctors_payment');
+
 
         $ba = new Booked_Appointment;
         $ba->cname = $request->input('cname');
         $ba->name = $request->input('name');
+        $ba->p_email = $request->input('p_email');
+        $ba->phone = $request->input('phone');
+        $ba->email = $request->input('email');
+        $ba->department = $request->input('department');
+        $ba->no_of_people = $request->input('no_of_people');
         $ba->avt = $request->input('avt');
+        $ba->doctors_payment = $request->input('doctors_payment');
 
         $da->save();
         $ba->save();

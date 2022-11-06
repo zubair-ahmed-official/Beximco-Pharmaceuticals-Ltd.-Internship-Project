@@ -27,6 +27,14 @@
                         </div>
 
                         <div class="form-group mb-3">
+                            <label for="" hidden>Patient's E-mail:</label>
+                            <input type="text" name="p_email" value="{{session()->get('email')}}" class="form-control" readonly hidden>
+                            @error('p_email')
+                            <span class="text-danger"><b> {{$message}} </b></span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group mb-3">
                             <label for="">Doctor's Name:</label>
                             <input type="text" name="name" value="{{$student->name}}" class="form-control" readonly>
                         </div>
@@ -71,6 +79,10 @@
                             <input type="radio" value=" {{$student->name}} Sunday 7:30pm" name="avt"> Sunday 9:20 pm  &nbsp;&nbsp;
                             <br><input type="radio" value=" {{$student->name}} Sunday 7:30pm" name="avt"> Sunday 9:40 pm &nbsp;&nbsp;
                             <input type="radio" value=" {{$student->name}} Sunday 7:30pm" name="avt"> Sunday 10:00 pm                            
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for=""><b>Doctor's Payment: </label>
+                            <input type="text" name="doctors_payment" value="{{$student->doctors_payment}} BDT" class="form-control" readonly>
                         </div>
 
                         <div class="form-group mb-3">

@@ -12,11 +12,12 @@ use Hash;
 use Session;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
-//use Illuminate\Support\Facades\Input; 
+//use Illuminate\Support\Facades\Input;  
 use App\Models\Disease;
 use App\Models\Doctor;
 use App\Models\Order;
 use App\Models\Delivered_order;
+use App\Models\Booked_Appointment;
 use App\Models\Postimage;
 use Illuminate\Support\Str;
 
@@ -339,7 +340,21 @@ class PhoneAuthController extends Controller
       //$Name = Str::ucfirst($Name);
     
     }
-    //profile
+    public function My_Appointments(Request $request)
+    {			
+    if($request->session()->has('email'))
+    {
+      //echo $request->session()->get('name');
+      $Name = $request->session()->get('email');
+      $user = Booked_Appointment :: all()->where('p_email',$Name);                         
+                                
+      return view('Medical.My_Appointments')->with('user',$user);
+    }
+    else
+      echo 'No data in the session';
+      //$Name = Str::ucfirst($Name);
+    
+    }
     
     public function profile(Request $request)
     {			
@@ -355,6 +370,7 @@ class PhoneAuthController extends Controller
       //$Name = Str::ucfirst($Name);
     
     }
+
     
    
 

@@ -15,6 +15,8 @@ class Doctor extends Model
         'email',
         'department',
         'bio',
-        'joining_date'
+        'joining_date',
+        'doctors_payment'
+
     ];
 }

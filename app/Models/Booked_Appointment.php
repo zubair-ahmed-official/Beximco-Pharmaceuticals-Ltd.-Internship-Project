@@ -12,6 +12,13 @@ class Booked_Appointment extends Model
     protected $fillable = [
         'cname',
         'name',
-        'avt'
+        'p_email',
+        'phone',
+        'email',
+        'department',
+        'bio',
+        'no_of_people',
+        'avt',
+       
     ];
 }
