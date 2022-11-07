@@ -236,6 +236,21 @@ class MedicalController extends Controller
 
     public function store_doctor_appointment(Request $request)
     {
+         //return $request;
+      $request->validate(
+        [
+          'cname'=>'required',
+          'no_of_people'=>'required',
+          'avt'=>'required|unique:booked_appointment,avt',
+          
+        ],
+        [
+          'cname.required'=>'Please enter your name',
+          'no_of_people.required'=>'Please enter number of people',
+          'avt.required'=>'Please enter an available time',
+          'avt.unique'=>'Sorry, this appointment time is already booked.',
+        ]
+      );
        
         $da = new Doctor_appointment;
         $da->cname = $request->input('cname');
