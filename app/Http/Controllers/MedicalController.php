@@ -281,6 +281,20 @@ class MedicalController extends Controller
         return redirect()->back()->with('status','Appointment booked Successfully');
     }
 
+    public function destroy_appointment($id)
+    {
+        $student = Booked_Appointment::find($id);
+        $student->delete();
+        return redirect()->back()->with('status','Booked Appointment Deleted Successfully');
+    }
+
+    public function destroy_order($id)
+    {
+        $student = Order::find($id);
+        $student->delete();
+        return redirect()->back()->with('status','Order Information Deleted Successfully');
+    }
+
     public function edit_med($id)
     {
         $med = Medicine::find($id);

@@ -340,6 +340,7 @@ class PhoneAuthController extends Controller
       //$Name = Str::ucfirst($Name);
     
     }
+
     public function My_Appointments(Request $request)
     {			
     if($request->session()->has('email'))
@@ -354,6 +355,15 @@ class PhoneAuthController extends Controller
       echo 'No data in the session';
       //$Name = Str::ucfirst($Name);
     
+    }
+
+    public function All_Booked_Appointments(Request $request)
+    {			
+   
+      $user = Booked_Appointment :: all();                         
+                                
+      return view('Medical.AllBookedAppointments')->with('user',$user);
+
     }
     
     public function profile(Request $request)

@@ -121,7 +121,14 @@ Route::post('/search_result',[PhoneAuthController::class, 'findSearch'])->name('
 
 Route::get('/My_Orders',[PhoneAuthController::class, 'My_Orders'])->name('My_Orders')->middleware('Auth');
 
-Route::get('/My_Appointments',[PhoneAuthController::class, 'My_Appointments'])->name('My_Appointments')->middleware('Auth');
+Route::get('/My_Appointments',[PhoneAuthController::class, 'My_Appointments'])->name('My_Appointments')->middleware('Auth'); 
+
+Route::get('/All_Booked_Appointments',[PhoneAuthController::class, 'All_Booked_Appointments'])->name('All_Booked_Appointments'); //
+
+Route::get('/delete_appointment/{id}',[MedicalController::class, 'destroy_appointment']); //delete_appointment
+
+Route::get('/delete-order/{id}',[MedicalController::class, 'destroy_order']); //delete_appointment
+
 
 Route::get('profile', [PhoneAuthController::class, 'profile'])->middleware('Auth');
 Route::get('e-profile/{id}', [PhoneAuthController::class, 'edit_profile'])->middleware('Auth');

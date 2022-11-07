@@ -119,7 +119,7 @@
 
                             <tr><td><br><input type="radio" value=" {{$student->name}} Sunday 9:00 pm " name="avt"> 9:00 pm   &nbsp;&nbsp;   
                             <input type="radio" value=" {{$student->name}} Sunday  9:20 pm" name="avt"> 9:20 pm  &nbsp;&nbsp;</td>
-                            <td><br><input type="radio" value="{{$student->name}} Monday 9:00 pm" name="avt">9:00 pm &nbsp;&nbsp;
+                            <td><br><input type="radio" value="{{$student->name}} Monday 9:00 pm" name="avt"> 9:00 pm &nbsp;&nbsp;
                             <input type="radio" value=" {{$student->name}} Monday 9:20 pm" name="avt"> 9:20 pm  &nbsp;&nbsp;</td>
                             <td><br><input type="radio" value="{{$student->name}} Tuesday 9:00 pm" name="avt"> 9:00 pm &nbsp;&nbsp;
                             <input type="radio" value=" {{$student->name}} Tuesday 9:20 pm" name="avt"> 9:20 pm  &nbsp;&nbsp;</td>

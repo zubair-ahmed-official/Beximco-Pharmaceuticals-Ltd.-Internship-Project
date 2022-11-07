@@ -27,7 +27,7 @@
                                 <th>Number</th>
                                 <th>Total Price</th>
                                 <th>Payment</th>
-                                <th>Edit</th>
+                                <th style="color:brown">Created Time</th>
                                 <th>Delete</th>
                                 <th>Deliver</th>
                             </tr>
@@ -46,8 +46,7 @@
                                 <td>{{ $item->num }}</td>
                                 <td>{{ $item->tprice }} BDT</td>
                                 <td>{{ $item->payment }} </td>
-                                <td>
-                                    <a href="{{ url('edit-order/'.$item->id) }}" class="btn btn-outline-primary btn-sm"><b>Edit</b></a>
+                                <td>{{ $item->created_at }} </td>
                                 <td>
                                     <a href="{{ url('delete-order/'.$item->id) }}" class="btn btn-outline-danger btn-sm"><b>Delete</b></a>
                                 </td>  
