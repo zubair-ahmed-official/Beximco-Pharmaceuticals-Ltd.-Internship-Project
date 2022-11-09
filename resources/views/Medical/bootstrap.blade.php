@@ -20,7 +20,7 @@ integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg
 				<p  style="font-size: 200%; color: rgb(0, 64, 128)"><b>Beximco Pharmaceuticals Ltd.</b></p>
 			</td>
 			<td align="right">
-				@if(Session::has('email'))<a style="font-size: 85%;" href="{{url('/home')}}" class="btn btn-outline-success"><b>HOME</a>@endif
+				@if(Session::has('email') || Session::has('aname'))<a style="font-size: 85%;" href="{{url('/home')}}" class="btn btn-outline-success"><b>HOME</a>@endif
 				&nbsp;&nbsp;
 				@if(Session::has('email') || Session::has('aname'))<a href="{{route('logout')}}" style="font-size: 85%;" class="btn btn-outline-danger">
 				<b>LOGOUT</a>@endif

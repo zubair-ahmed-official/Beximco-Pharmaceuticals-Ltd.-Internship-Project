@@ -10,6 +10,7 @@
                 <div class="card-header">
                     <h4 style="color:rgb(45, 45, 134)"><b>Upcoming Events</b>
                     </h4>
+                    <h6 style="color:rgb(134, 45, 45)">Please, call our hotline number to register for events.</h6>
                 </div>
                 <div class="card-body">
 
@@ -31,9 +32,7 @@
                                 <td>{{ $item->event_date }}</td>
                                 <td>{{ $item->details }}</td>
                                 
-                                <td>
-                                    <a href="{{ url('register-event/'.$item->id) }}" class="btn btn-success btn-sm"><b>Register</b></a>
-                                </td> 
+                               
 
                                 @if(Session::has('aname'))
                                 <td>
