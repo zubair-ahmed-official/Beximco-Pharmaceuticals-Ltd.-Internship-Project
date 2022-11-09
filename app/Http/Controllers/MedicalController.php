@@ -10,6 +10,7 @@ use App\Models\Booked_Appointment;
 use App\Models\Doctor_appointment;
 use App\Models\Order; 
 use App\Models\Delivered_order;
+use App\Models\Event;
 use Illuminate\Http\Request;
 
 class MedicalController extends Controller
@@ -69,6 +70,13 @@ class MedicalController extends Controller
         return view('Medical.Order_index', compact('order')); //Cust_Medicines_Diseases
     }
 
+    public function index_events()
+    {
+        $event = Event::all();
+        return view('Medical.Event_index', compact('event')); //Cust_Medicines_Diseases
+    }
+
+
     public function deliver_index()
     {
         $order = Delivered_order::all();
@@ -115,6 +123,17 @@ class MedicalController extends Controller
         return view('Medical.create_dis');
     }
 
+    public function create_event()
+    {
+        return view('Medical.AddEvent');
+    }
+
+    public function destroy_event($id)
+    {
+        $student = Event::find($id);
+        $student->delete();
+        return redirect()->back()->with('status','Event Deleted Successfully');
+    }
 
     public function dlist()
     {
@@ -209,6 +228,31 @@ class MedicalController extends Controller
         $dis->save();
         return redirect()->back()->with('status','Disease Information Added Successfully');
     }
+    
+    public function store_event(Request $request)
+    {
+        $request->validate(
+            [
+              'event_name'=>'required', 
+              'event_date'=>'required',
+              'details'=>'required',
+            ],
+            [
+              'event_name.required'=>'Please Enter a valid Name',
+              'event_date.required'=>'Please Enter a valid medicine',
+              'details.required'=>'Please Enter a valid Details',
+            ]
+          );
+        $dis = new Event;
+        $dis->event_name = $request->input('event_name');
+        $dis->event_date = $request->input('event_date');
+        $dis->details = $request->input('details');
+        
+        $dis->save();
+        return redirect()->back()->with('status','Event Added Successfully');
+    }
+
+
     
     public function store_MeDis(Request $request)
     {

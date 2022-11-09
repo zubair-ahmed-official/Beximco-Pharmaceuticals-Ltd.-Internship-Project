@@ -37,7 +37,7 @@ Route::get('/register', [PhoneAuthController::class, 'register']);
 Route::post('/register', [PhoneAuthController::class, 'register_store']);
 
 
-Route::get('/admin_login', [PhoneAuthController::class, 'admin_login']);
+Route::get('/admin_login', [PhoneAuthController::class, 'admin_login'])->name('admin_login');
 Route::post('/admin_login',[PhoneAuthController::class, 'check_admin_login'])->name('check_admin_login');
 
 Route::get('/manager_login', [PhoneAuthController::class, 'manager_login']);
@@ -92,12 +92,20 @@ Route::get('index_orders', [MedicalController::class, 'index_orders']); //delive
 
 Route::get('deliver_index', [MedicalController::class, 'deliver_index']);
 
+Route::get('index_events', [MedicalController::class, 'index_events']);
+
+Route::get('delete-event/{id}', [MedicalController::class, 'destroy_event']);
+
 Route::get('deliver-order/{id}', [MedicalController::class, 'delivering_order']);
 Route::post('deliver-order/{id}', [MedicalController::class, 'deliver_order']);
 
 
 Route::get('add-dis', [MedicalController::class, 'create_dis']);
 Route::post('add-dis', [MedicalController::class, 'store_dis']);
+
+
+Route::get('add-event', [MedicalController::class, 'create_event']);
+Route::post('add-event', [MedicalController::class, 'store_event']);
 
 Route::get('cust_dis', [MedicalController::class, 'cust_dis'])->middleware('Auth');
 

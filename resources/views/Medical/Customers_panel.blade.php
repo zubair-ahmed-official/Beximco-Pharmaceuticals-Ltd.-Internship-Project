@@ -18,7 +18,10 @@
 	<br>
 	<table align="center" class="container table table-striped"  border="4">
     <tr><td></td><td></td></tr>
-    <td align="center"> <b> List of Medicines </td>
+	<tr><td align="center"><b> Profile</td>
+	<td align="center"><a href ="{{url('profile')}}"><input type="button" class="btn btn btn-success" style="width: 70px" value="Show"> </a></td></tr>
+    
+	<td align="center"> <b> List of Medicines </td>
 	<td align="center"><a href ="cust_med"><input type="button" class="btn btn btn-success" style="width: 70px" value="Show"> </a></td>
 	</tr>
 
@@ -33,7 +36,7 @@
 
     <tr>
 	<td align="center"> <b> Events</td>
-	<td align="center"><a href =""><input type="button" class="btn btn btn-success" style="width: 70px" value="Show"> </a></td>
+	<td align="center"><a href ="index_events"><input type="button" class="btn btn btn-success" style="width: 70px" value="Show"> </a></td>
 	</tr>
 
 	<tr>

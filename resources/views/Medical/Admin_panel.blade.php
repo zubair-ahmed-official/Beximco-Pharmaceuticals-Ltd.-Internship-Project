@@ -31,11 +31,11 @@
 	</tr>
 	<tr>
 	<td align="center"> <b> Add Event</td>
-	<td align="center"><a href =""><input type="button" class="btn btn btn-success" style="width: 70px" value="Add"> </a></td>
+	<td align="center"><a href ="add-event"><input type="button" class="btn btn btn-success" style="width: 70px" value="Add"> </a></td>
 	</tr>
 	<tr>
 	<td align="center"> <b> All Events</td>
-	<td align="center"><a href =""><input type="button" class="btn btn btn-success" style="width: 70px" value="Show"> </a></td>
+	<td align="center"><a href ="index_events"><input type="button" class="btn btn btn-success" style="width: 70px" value="Show"> </a></td>
 	</tr>
 	<tr>
 	<td align="center"> <b> All Booked Events</td>

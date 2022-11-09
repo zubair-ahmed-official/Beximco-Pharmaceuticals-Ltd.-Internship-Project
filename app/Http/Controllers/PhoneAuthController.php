@@ -205,8 +205,18 @@ class PhoneAuthController extends Controller
 
     public function logout()
     {
-      session()->flush();
-      return redirect()->route('login_otp');
+      if(session()->has('aname'))
+      {
+        session()->flush();
+        return redirect()->route('admin_login');
+      }
+      
+      if(session()->has('email'))
+      {
+        session()->flush();
+        return redirect()->route('login_otp');
+      }
+      
     }
 
 
@@ -231,9 +241,16 @@ class PhoneAuthController extends Controller
           'code.exists'=>'OTP Code does not exist'
         ]
       );
-      $user = Admin:: where('aname',$request->aname)-> where('code',$request->code);
+      $user = Admin:: where('aname',$request->aname)-> where('code',$request->code)->first();
       if($user == true)
       {
+        session()->put('aname',$user->aname);
+        //session()->flash('status','Login Successful');
+        //return view('Medical.Customers_panel');
+        //return redirect()->route('Medical.Customers_panel');
+      
+        $Name = $request->session()->get('aname');
+        
         return view('Medical.Admin_panel');
       }
     }

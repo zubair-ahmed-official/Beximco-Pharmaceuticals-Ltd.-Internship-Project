@@ -33,7 +33,9 @@ integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg
 				<tr><td></td></tr><tr><td></td></tr>
 				<tr><td></td></tr>
 					<tr>
-						<td colspan="2" align="center"><h3 style="color:rgb(102, 0, 204)"><b> &nbsp; Beximco Pharmaceuticals Ltd. &nbsp; <br></b></h3></td>
+						<td colspan="2" align="center"><a href ="{{url('/home')}}" style="text-decoration:none; color:rgb(102, 0, 204)" >
+						<h3 style=""><b> 
+						&nbsp; Beximco Pharmaceuticals Ltd. &nbsp;</a> <br></b></h3></td>
 				</tr>			
 				<tr>
 					<td colspan="2" align="center"><h4 style="color:brown"><b> &nbsp; Customers Login &nbsp; <br></b></h4></td>
