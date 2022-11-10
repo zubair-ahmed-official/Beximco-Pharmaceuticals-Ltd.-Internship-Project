@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Register;
 use App\Models\Doctor;
 use App\Models\Medicine;
 use App\Models\Disease;
@@ -12,6 +12,7 @@ use App\Models\Order;
 use App\Models\Delivered_order;
 use App\Models\Event;
 use App\Models\Notice;
+use App\Models\ques_ans;
 use Illuminate\Http\Request;
 
 class MedicalController extends Controller
@@ -139,6 +140,14 @@ class MedicalController extends Controller
     {
         return view('Medical.add_notice');
     }
+
+    public function create_ques()
+    {
+        $Name = session()->get('email');
+        $uname = Register :: all()->where('email',$Name); 
+        return view('Medical.add_question')->with('uname',$uname);
+    }
+
 
     public function destroy_event($id)
     {
@@ -282,6 +291,64 @@ class MedicalController extends Controller
         
         $notice->save();
         return redirect()->back()->with('status','Notice Added Successfully');
+    }
+
+    public function store_ques(Request $request)
+    {
+        $request->validate(
+            [
+              'name'=>'required', 
+              'email'=>'required',
+              'ques'=>'required',
+              
+            ],
+            [
+              'name.required'=>'Please Enter your Name',
+              'ques.required'=>'Please Enter a valid Question',
+            ]
+          );
+        $que = new ques_ans;
+        $que->name = $request->input('name');
+        $que->email = $request->input('email');
+        $que->ques = $request->input('ques');
+        
+        $que->save();
+        
+       
+        return redirect()->back()->with('status','Question Added Successfully');
+    }
+
+    public function answering($id)
+    {
+        $med = ques_ans::find($id);
+        return view('Medical.add_answer', compact('med'));
+    }
+
+    public function answered(Request $request, $id)
+    {
+        $request->validate(
+            [
+              'name'=>'required', 
+              'ques'=>'required',
+              'ans'=>'required',
+              
+            ],
+            [
+              'name.required'=>'Please Enter your Name',
+              'ques.required'=>'Please Enter a valid Question',
+              'ans.required'=>'Please Enter a valid Answer',
+            ]
+          );
+
+          $answer = ques_ans::find($id);
+          $answer->name = $request->input('name');
+          $answer->ques = $request->input('ques');
+          $answer->ans = $request->input('ans');
+        
+        $answer->update();
+        
+       
+        return redirect()->back()->with('status','Answer Added Successfully');
     }
 
 

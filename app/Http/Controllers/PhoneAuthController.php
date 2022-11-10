@@ -7,6 +7,7 @@ use App\Models\Admin;
 use App\Models\Manager;
 use App\Models\Salesman;
 use App\Models\Register;
+use App\Models\ques_ans;
 
 use Hash;
 use Session;
@@ -356,6 +357,26 @@ class PhoneAuthController extends Controller
       echo 'No data in the session';
       //$Name = Str::ucfirst($Name);
     
+    }
+
+    public function My_Questions(Request $request)
+    {			
+    if($request->session()->has('email'))
+    {
+      //echo $request->session()->get('name');
+      $Name = $request->session()->get('email');
+      $user = ques_ans :: all()->where('email',$Name);                                                  
+      return view('Medical.My_Ques')->with('user',$user);
+    }
+    else
+      echo 'No data in the session';
+    }
+
+    public function All_Questions(Request $request)
+    {			
+      $user = ques_ans :: all();                         
+                                
+      return view('Medical.All_Ques')->with('user',$user);
     }
 
     public function My_Appointments(Request $request)

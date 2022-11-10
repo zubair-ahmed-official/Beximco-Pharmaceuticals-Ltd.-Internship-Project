@@ -89,7 +89,7 @@
 
 	<tr>
 	<td align="center"><b> All Questions</td>
-	<td align="center"><a href ="#"><input type="button" class="btn btn btn-success" style="width: 70px" value="Show"> </a></td>
+	<td align="center"><a href ="All_Questions"><input type="button" class="btn btn btn-success" style="width: 70px" value="Show"> </a></td>
 	</tr>
 	
 	<tr><td></td><td></td></tr>

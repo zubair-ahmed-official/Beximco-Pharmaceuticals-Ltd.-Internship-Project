@@ -9,9 +9,9 @@
 
             <div class="card">
             <div class="card-header">
-                    <h4 style="color:brown"><b>
-                    
-                    Add Event
+            <h4 style="color:green"><b> 
+            <a href="{{ url('notices') }}" class="btn btn-secondary float-end"><b>Notice Index</b></a>
+                Add Notice
                 </b></h4>
                 </div>
                 <div class="card-body">
@@ -20,7 +20,7 @@
                         @csrf
 
                         <div class="form-group mb-3">
-                            <label for=""><b>Notice</label>
+                            <label for=""><b>Headline</label>
                             <input type="text" name="headline" value="{{old('headline')}}" class="form-control">
                             @error('headline')
                             <span class="text-danger"> {{$message}} </span>

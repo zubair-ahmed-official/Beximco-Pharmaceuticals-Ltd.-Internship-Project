@@ -117,6 +117,16 @@ Route::post('add-dis', [MedicalController::class, 'store_dis'])->middleware('Adm
 Route::get('add-event', [MedicalController::class, 'create_event'])->middleware('AdminAuth');
 Route::post('add-event', [MedicalController::class, 'store_event'])->middleware('AdminAuth');
 
+Route::get('add-ques', [MedicalController::class, 'create_ques']);
+Route::post('add-ques', [MedicalController::class, 'store_ques']);
+
+Route::get('My_Questions',[PhoneAuthController::class, 'My_Questions'])->name('My_Questions');
+
+Route::get('All_Questions',[PhoneAuthController::class, 'All_Questions'])->name('All_Questions');
+
+Route::get('answer/{id}',[MedicalController::class, 'answering']);
+Route::post('answer/{id}',[MedicalController::class, 'answered']);
+
 Route::get('cust_dis', [MedicalController::class, 'cust_dis'])->middleware('Auth');
 
 Route::get('dis', [MedicalController::class, 'index_dis'])->middleware('AdminAuth');
