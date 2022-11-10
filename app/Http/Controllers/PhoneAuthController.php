@@ -249,7 +249,7 @@ class PhoneAuthController extends Controller
         //return view('Medical.Customers_panel');
         //return redirect()->route('Medical.Customers_panel');
       
-        $Name = $request->session()->get('aname');
+        //$Name = $request->session()->get('aname');
         
         return view('Medical.Admin_panel');
       }

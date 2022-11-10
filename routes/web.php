@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-
+use App\Http\Middleware\AdminAuth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -53,8 +53,8 @@ Route::get('main/successlogin', [PhoneAuthController::class,'successlogin']);
 //Route::get('main/logout', 'PhoneAuthController@logout');
 
 
-Route::get('add-doctors', [MedicalController::class, 'create']);
-Route::post('add-doctors', [MedicalController::class, 'store']);
+Route::get('add-doctors', [MedicalController::class, 'create'])->middleware('AdminAuth');
+Route::post('add-doctors', [MedicalController::class, 'store'])->middleware('AdminAuth');
 
 Route::get('doctor_appointment', [MedicalController::class, 'doctor_appointment']); 
 
@@ -62,24 +62,24 @@ Route::get('doctor_appointment', [MedicalController::class, 'doctor_appointment'
 Route::get('book_doctor_appointment/{id}', [MedicalController::class, 'book_doctor_appointment']);
 Route::post('book_doctor_appointment/{id}', [MedicalController::class, 'store_doctor_appointment']); 
 
-Route::get('doctors', [MedicalController::class, 'index']);
-Route::get('edit-doctors/{id}', [MedicalController::class, 'edit']);
-Route::put('update-doctors/{id}', [MedicalController::class, 'update']);
-Route::get('delete-doctors/{id}', [MedicalController::class, 'destroy']);
+Route::get('doctors', [MedicalController::class, 'index'])->middleware('AdminAuth');
+Route::get('edit-doctors/{id}', [MedicalController::class, 'edit'])->middleware('AdminAuth');
+Route::put('update-doctors/{id}', [MedicalController::class, 'update'])->middleware('AdminAuth');
+Route::get('delete-doctors/{id}', [MedicalController::class, 'destroy'])->middleware('AdminAuth');
 
-Route::get('index_medis', [MedicalController::class, 'index_medis']);
+Route::get('index_medis', [MedicalController::class, 'index_medis'])->middleware('AdminAuth');
 
 Route::get('cust_index_medis', [MedicalController::class, 'cust_index_medis'])->middleware('Auth');
 
-Route::get('add-med', [MedicalController::class, 'create_med']);
-Route::post('add-med', [MedicalController::class, 'store_med']);
+Route::get('add-med', [MedicalController::class, 'create_med'])->middleware('AdminAuth');
+Route::post('add-med', [MedicalController::class, 'store_med'])->middleware('AdminAuth');
 
 Route::get('cust_med', [MedicalController::class, 'cust_med'])->middleware('Auth');
 
-Route::get('med', [MedicalController::class, 'index_med']);
-Route::get('edit-med/{id}', [MedicalController::class, 'edit_med']);
-Route::put('update-med/{id}', [MedicalController::class, 'update_med']);
-Route::get('delete-med/{id}', [MedicalController::class, 'destroy_med']);
+Route::get('med', [MedicalController::class, 'index_med'])->middleware('AdminAuth');
+Route::get('edit-med/{id}', [MedicalController::class, 'edit_med'])->middleware('AdminAuth');
+Route::put('update-med/{id}', [MedicalController::class, 'update_med'])->middleware('AdminAuth');
+Route::get('delete-med/{id}', [MedicalController::class, 'destroy_med'])->middleware('AdminAuth');
 
 Route::get('order-med/{id}', [MedicalController::class, 'ordering_med'])->middleware('Auth');
 Route::post('order-med/{id}', [MedicalController::class, 'order_med'])->middleware('Auth');
@@ -88,40 +88,50 @@ Route::get('again_order_med/{id}', [MedicalController::class, 'again_ordering_me
 Route::post('again_order_med/{id}', [MedicalController::class, 'again_order_med'])->middleware('Auth');
 
 
-Route::get('index_orders', [MedicalController::class, 'index_orders']); //deliver-order Deliver_index
+Route::get('index_orders', [MedicalController::class, 'index_orders'])->middleware('AdminAuth');
 
-Route::get('deliver_index', [MedicalController::class, 'deliver_index']);
+Route::get('deliver_index', [MedicalController::class, 'deliver_index'])->middleware('AdminAuth');
 
 Route::get('index_events', [MedicalController::class, 'index_events']);
 
-Route::get('delete-event/{id}', [MedicalController::class, 'destroy_event']);
+Route::get('add-notice', [MedicalController::class, 'create_notice']);
 
-Route::get('deliver-order/{id}', [MedicalController::class, 'delivering_order']);
-Route::post('deliver-order/{id}', [MedicalController::class, 'deliver_order']);
+Route::post('add-notice', [MedicalController::class, 'store_notice']);
+
+Route::get('update_notice/{id}', [MedicalController::class, 'edit_notice']);
+Route::put('update_notice/{id}', [MedicalController::class, 'update_notice']);
+Route::get('delete-notice/{id}', [MedicalController::class, 'destroy_notice']);
+
+Route::get('notices', [MedicalController::class, 'index_notice']);
+
+Route::get('delete-event/{id}', [MedicalController::class, 'destroy_event'])->middleware('AdminAuth');
+
+Route::get('deliver-order/{id}', [MedicalController::class, 'delivering_order'])->middleware('AdminAuth');
+Route::post('deliver-order/{id}', [MedicalController::class, 'deliver_order'])->middleware('AdminAuth');
 
 
-Route::get('add-dis', [MedicalController::class, 'create_dis']);
-Route::post('add-dis', [MedicalController::class, 'store_dis']);
+Route::get('add-dis', [MedicalController::class, 'create_dis'])->middleware('AdminAuth');
+Route::post('add-dis', [MedicalController::class, 'store_dis'])->middleware('AdminAuth');
 
 
-Route::get('add-event', [MedicalController::class, 'create_event']);
-Route::post('add-event', [MedicalController::class, 'store_event']);
+Route::get('add-event', [MedicalController::class, 'create_event'])->middleware('AdminAuth');
+Route::post('add-event', [MedicalController::class, 'store_event'])->middleware('AdminAuth');
 
 Route::get('cust_dis', [MedicalController::class, 'cust_dis'])->middleware('Auth');
 
-Route::get('dis', [MedicalController::class, 'index_dis']);
-Route::get('edit-dis/{id}', [MedicalController::class, 'edit_dis']);
-Route::put('update-dis/{id}', [MedicalController::class, 'update_dis']);
-Route::get('delete-dis/{id}', [MedicalController::class, 'destroy_dis']);
+Route::get('dis', [MedicalController::class, 'index_dis'])->middleware('AdminAuth');
+Route::get('edit-dis/{id}', [MedicalController::class, 'edit_dis'])->middleware('AdminAuth');
+Route::put('update-dis/{id}', [MedicalController::class, 'update_dis'])->middleware('AdminAuth');
+Route::get('delete-dis/{id}', [MedicalController::class, 'destroy_dis'])->middleware('AdminAuth');
 
-Route::get('Med_Dis/{id}', [MedicalController::class, 'Medicines_Diseases']);
+Route::get('Med_Dis/{id}', [MedicalController::class, 'Medicines_Diseases'])->middleware('AdminAuth');
 
 Route::get('Cust_Med_Dis/{id}', [MedicalController::class, 'Cust_Medicines_Diseases']);
 
-Route::get('Med_Dis', [MedicalController::class, 'MeDis']);//dlist
-Route::post('Med_Dis', [MedicalController::class, 'store_MeDis']);//dlist destroy_md 
+Route::get('Med_Dis', [MedicalController::class, 'MeDis'])->middleware('AdminAuth');
+Route::post('Med_Dis', [MedicalController::class, 'store_MeDis'])->middleware('AdminAuth');
 
-Route::get('destroy_md/{id}', [MedicalController::class, 'destroy_md']);
+Route::get('destroy_md/{id}', [MedicalController::class, 'destroy_md'])->middleware('AdminAuth');
 
 
 Route::get('/search', [PhoneAuthController::class, 'find']);
@@ -133,9 +143,9 @@ Route::get('/My_Appointments',[PhoneAuthController::class, 'My_Appointments'])->
 
 Route::get('/All_Booked_Appointments',[PhoneAuthController::class, 'All_Booked_Appointments'])->name('All_Booked_Appointments'); //
 
-Route::get('/delete_appointment/{id}',[MedicalController::class, 'destroy_appointment']); //delete_appointment
+Route::get('/delete_appointment/{id}',[MedicalController::class, 'destroy_appointment'])->middleware('AdminAuth');
 
-Route::get('/delete-order/{id}',[MedicalController::class, 'destroy_order']); //delete_appointment
+Route::get('/delete-order/{id}',[MedicalController::class, 'destroy_order'])->middleware('AdminAuth');
 
 
 Route::get('profile', [PhoneAuthController::class, 'profile'])->middleware('Auth');

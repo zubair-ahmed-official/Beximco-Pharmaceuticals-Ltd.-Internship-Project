@@ -11,6 +11,7 @@ use App\Models\Doctor_appointment;
 use App\Models\Order; 
 use App\Models\Delivered_order;
 use App\Models\Event;
+use App\Models\Notice;
 use Illuminate\Http\Request;
 
 class MedicalController extends Controller
@@ -76,6 +77,12 @@ class MedicalController extends Controller
         return view('Medical.Event_index', compact('event')); //Cust_Medicines_Diseases
     }
 
+    public function index_notice()
+    {
+        $notices = Notice::all();
+        return view('Medical.Notices', compact('notices')); 
+    }
+
 
     public function deliver_index()
     {
@@ -126,6 +133,11 @@ class MedicalController extends Controller
     public function create_event()
     {
         return view('Medical.AddEvent');
+    }
+
+    public function create_notice()
+    {
+        return view('Medical.add_notice');
     }
 
     public function destroy_event($id)
@@ -252,6 +264,26 @@ class MedicalController extends Controller
         return redirect()->back()->with('status','Event Added Successfully');
     }
 
+    public function store_notice(Request $request)
+    {
+        $request->validate(
+            [
+              'headline'=>'required', 
+              'details'=>'required',
+            ],
+            [
+              'headline.required'=>'Please Enter a valid Name',
+              'details.required'=>'Please Enter a valid Details',
+            ]
+          );
+        $notice = new Notice;
+        $notice->headline = $request->input('headline');
+        $notice->details = $request->input('details');
+        
+        $notice->save();
+        return redirect()->back()->with('status','Notice Added Successfully');
+    }
+
 
     
     public function store_MeDis(Request $request)
@@ -339,6 +371,13 @@ class MedicalController extends Controller
         return redirect()->back()->with('status','Order Information Deleted Successfully');
     }
 
+    public function destroy_notice($id)
+    {
+        $student = Notice::find($id);
+        $student->delete();
+        return redirect()->back()->with('status','Notice Deleted Successfully');
+    }
+
     public function edit_med($id)
     {
         $med = Medicine::find($id);
@@ -348,6 +387,12 @@ class MedicalController extends Controller
     {
         $dis = Disease::find($id);
         return view('Medical.edit_dis', compact('dis'));
+    }
+
+    public function edit_notice($id)
+    {
+        $med = Notice::find($id);
+        return view('Medical.edit_notice', compact('med'));
     }
 
     public function update(Request $request, $id)
@@ -394,6 +439,27 @@ class MedicalController extends Controller
        
         $med->update();
         return redirect()->back()->with('status','Medicines Information Updated Successfully');
+    }
+
+    public function update_notice(Request $request, $id)
+    {
+        $request->validate(
+            [
+              'headline'=>'required', 
+              'details'=>'required',
+            ],
+            [
+              'headline.required'=>'Please Enter a valid Name',
+              'details.required'=>'Please Enter a valid Details',
+            ]
+          );
+
+        $med = Notice::find($id);
+        $med->headline = $request->input('headline');
+        $med->details = $request->input('details');
+       
+        $med->update();
+        return redirect()->back()->with('status','Notice Updated Successfully');
     }
 
     public function ordering_med($id)

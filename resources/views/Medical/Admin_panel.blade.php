@@ -19,13 +19,29 @@
 	</tr>
 
 	<tr>
+	<td align="center"> <b> Add Medicine</td>
+	<td align="center"><a href ="add-med"><input type="button" class="btn btn btn-success" style="width: 70px" value="Add"> </a></td>
+	</tr>
+	<tr>
+	<td align="center"> <b> All Medicines</td>
+	<td align="center"><a href ="med"><input type="button" class="btn btn btn-success" style="width: 70px" value="Show"> </a></td>
+	</tr>
+
+	
+	<tr>
 	<td align="center"> <b> Add Disease</td>
-	<td align="center"><a href ="#"><input type="button" class="btn btn btn-success" style="width: 70px" value="Add"> </a></td>
+	<td align="center"><a href ="add-dis"><input type="button" class="btn btn btn-success" style="width: 70px" value="Add"> </a></td>
 	</tr>
 	<tr>
 	<td align="center"> <b> All Categories of Disease</td>
-	<td align="center"><a href ="#"><input type="button" class="btn btn btn-success" style="width: 70px" value="Show"> </a></td>
+	<td align="center"><a href ="dis"><input type="button" class="btn btn btn-success" style="width: 70px" value="Show"> </a></td>
 	</tr>
+
+	<tr>
+	<td align="center"> <b> Merge Medicines and Disease</td>
+	<td align="center"><a href ="Med_Dis"><input type="button" class="btn btn btn-success" style="width: 70px" value="Show"> </a></td>
+	</tr>
+
 	<tr>
 	<td align="center"> <b> All Customers</td>
 	<td align="center"><a href ="#"><input type="button" class="btn btn btn-success" style="width: 70px"  value="Show"> </a></td>
@@ -38,15 +54,22 @@
 	<td align="center"> <b> All Events</td>
 	<td align="center"><a href ="index_events"><input type="button" class="btn btn btn-success" style="width: 70px" value="Show"> </a></td>
 	</tr>
-	<tr>
-	<td align="center"> <b> All Booked Events</td>
-	<td align="center"><a href ="#"><input type="button" class="btn btn btn-success" style="width: 70px" value="Show"> </a></td>
-	</tr>
 
 	<tr>
 	<td align="center"><b> Doctor's List</td>
 	<td align="center"><a href ="doctors"><input type="button" class="btn btn btn-success" style="width: 70px" value="Show"> </a></td>
 	</tr>
+
+	<tr>
+	<td align="center"><b> All Customer's Orders</td>
+	<td align="center"><a href ="index_orders"><input type="button" class="btn btn btn-success" style="width: 70px" value="Show"> </a></td>
+	</tr>
+
+	<tr>
+	<td align="center"><b> All Delivered Orders</td>
+	<td align="center"><a href ="deliver_index"><input type="button" class="btn btn btn-success" style="width: 70px" value="Show"> </a></td>
+	</tr>
+
 
 	<tr>
 	<td align="center"><b> All Doctor's Appointment</td>
@@ -60,7 +83,7 @@
 
 	<tr>
 	<td align="center"><b> Add Notice </td>
-	<td align="center"><a href ="#"><input type="button" class="btn btn btn-success" style="width: 70px" value="Add"> </a></td>
+	<td align="center"><a href ="add-notice"><input type="button" class="btn btn btn-success" style="width: 70px" value="Add"> </a></td>
 	</tr>
 
 
