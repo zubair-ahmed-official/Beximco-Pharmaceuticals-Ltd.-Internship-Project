@@ -131,7 +131,7 @@ class PhoneAuthController extends Controller
           'email.required'=>'Please enter a valid email',
           'code.required'=>'Please enter valid Password/OTP',
           'email.exists'=>'Email does not exist',
-          'code.exists'=>'Password/OTP Code does not exist'
+          'code.exists'=>'Wrong Password/OTP Code'
         ]
       );
 
@@ -145,19 +145,19 @@ class PhoneAuthController extends Controller
 
       }
     }
-    public function editing_password($id)
+    public function editing_password()
     { 
-        $reg = OTP::find($id);
-        return view('Medical.UpdatePassword', compact('reg'));
+        //$reg = OTP::find();
+        return view('Medical.UpdatePassword');
     }
 
-    public function update_password(Request $request, $email)
+    public function update_password(Request $request)
     {
         // $email = session()->put('email');
-      //$reg = OTP:: where('email',$request->email)-> where('code',$request->code)->first();
-        $reg = OTP::find($email);
+      $reg = OTP:: where('email',$request->email)->first();
+        //$reg = OTP::find($email);
 
-        $reg->email = $request->input('email');
+        //$reg->email = $request->input('email');
         $reg->code = $request->input('code');
         
         $reg->update();

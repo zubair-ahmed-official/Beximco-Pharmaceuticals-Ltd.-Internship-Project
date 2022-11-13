@@ -36,7 +36,12 @@
                             <td align= "right">
                             <a href="{{ url('e-profile/'.$item->id) }}" class="btn btn-success btn-sm"><b>Update Profile</a>
                             <td>
-                            
+                            <tr>
+                            <td></td>
+                            <td align= "right">
+                            <a href="{{ url('e-password') }}" class="btn btn-dark btn-sm"><b>Update Password</a>
+                            <td>
+                            </tr>
                             </tr>
                         </tbody>
                     </table>

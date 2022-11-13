@@ -20,7 +20,7 @@
 
                         <div class="form-group mb-3">
                             <label for=""><b>E-Mail</label>
-                            <input type="text" name="email" class="form-control">
+                            <input type="text" name="email" class="form-control" value="{{session()->get('email')}}" readonly>
                             @error('email')
                             <span class="text-danger"> {{$message}} </span>
                             @enderror
@@ -28,7 +28,7 @@
 
                         <div class="form-group mb-3">
                             <label for="">Current Password</label>
-                            <input type="text" name="code" class="form-control">
+                            <input type="password" name="code" class="form-control">
                             @error('code')
                             <span class="text-danger"> {{$message}} </span>
                             @enderror

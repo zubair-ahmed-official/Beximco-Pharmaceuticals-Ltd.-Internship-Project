@@ -15,19 +15,19 @@
                 </div>
                 <div class="card-body">
 
-                    <form action="{{ url('edit-password/'.$reg->id)}}" method="POST">
+                    <form action="{{ url('edit-password')}}" method="POST">
                         @csrf
 
                         <div class="form-group mb-3">
                             <label for=""><b>E-Mail</label>
-                            <input type="text" name="email" value="{{$reg->email}}" class="form-control">
+                            <input type="text" name="email" value="{{session()->get('email')}}" class="form-control" readonly>
                             @error('email')
                             <span class="text-danger"> {{$message}} </span>
                             @enderror
                         </div>
                         <div class="form-group mb-3">
                             <label for="">New Password</label>
-                            <input type="text" name="code" value="{{$reg->code}}" class="form-control">
+                            <input type="password" name="code" value="" class="form-control">
                             @error('code')
                             <span class="text-danger"> {{$message}} </span>
                             @enderror
