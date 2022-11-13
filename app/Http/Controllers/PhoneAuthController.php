@@ -115,6 +115,57 @@ class PhoneAuthController extends Controller
         return view('Medical.update_profile', compact('reg'));
     }
 
+    public function edit_password()
+    { 
+        return view('Medical.ChangePassword');
+    }
+
+    public function check_password(Request $request)
+    {
+      $request->validate(
+        [
+          'email'=>'required|exists:otp_table,email',
+          'code'=>'required|exists:otp_table,code'
+        ],
+        [
+          'email.required'=>'Please enter a valid email',
+          'code.required'=>'Please enter valid Password/OTP',
+          'email.exists'=>'Email does not exist',
+          'code.exists'=>'Password/OTP Code does not exist'
+        ]
+      );
+
+      $reg = OTP:: where('email',$request->email)-> where('code',$request->code)->first();
+      if($reg == true)
+      {
+        $reg->email = $request->input('email');
+        $reg->code = $request->input('code');
+        
+        return redirect()->route('edit-password')->with('status','Password matched.');
+
+      }
+    }
+    public function editing_password($id)
+    { 
+        $reg = OTP::find($id);
+        return view('Medical.UpdatePassword', compact('reg'));
+    }
+
+    public function update_password(Request $request, $email)
+    {
+        // $email = session()->put('email');
+      //$reg = OTP:: where('email',$request->email)-> where('code',$request->code)->first();
+        $reg = OTP::find($email);
+
+        $reg->email = $request->input('email');
+        $reg->code = $request->input('code');
+        
+        $reg->update();
+       
+        return redirect()->back()->with('status','OTP Information updated Successfully');
+    
+    }
+
     public function update_profile(Request $request, $email)
     {
         

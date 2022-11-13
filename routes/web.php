@@ -162,6 +162,14 @@ Route::get('profile', [PhoneAuthController::class, 'profile'])->middleware('Auth
 Route::get('e-profile/{id}', [PhoneAuthController::class, 'edit_profile'])->middleware('Auth');
 Route::put('edit-profile/{id}', [PhoneAuthController::class, 'update_profile'])->middleware('Auth');
 
+Route::get('e-password', [PhoneAuthController::class, 'edit_password']);
+Route::post('e-password', [PhoneAuthController::class, 'check_password'])->name('check_password');
+
+Route::get('edit-password/{id}', [PhoneAuthController::class, 'editing_password']);/*->name('edit-password')*/
+
+Route::post('edit-password/{id}', [PhoneAuthController::class, 'update_password']);
+
+
 //Route::get("delete", [PhoneAuthController::class, "deleteImage"]);
 
 //Route::get('/search_result', [PhoneAuthController::class, 'search_result']); 
