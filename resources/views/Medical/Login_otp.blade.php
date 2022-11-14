@@ -77,7 +77,7 @@ integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg
 					
 					<tr>
 						<td colspan="2" align="center"><a style=" text-decoration: none; color: rgb(128, 0, 255)" 
-						href ="Forgot_Password.html">Forgot password? </a></td>
+						href ="/phone-auth">Forgot password? </a></td>
 					</tr>	
 
 					

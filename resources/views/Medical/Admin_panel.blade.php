@@ -9,14 +9,7 @@
 	<br>
 	<table align="center" class="container table table-striped"  border="4">
 	<tr><td></td><td></td></tr>
-	<tr>
-	<td align="center"> <b> Add Employee</td>
-	<td align="center"><a href ="#"><input type="button" class="btn btn-success" style="width: 70px " value="Add"> </a></td>
-	</tr>
-	<tr>
-	<td align="center"> <b> All Employees</td>
-	<td align="center"><a href ="#"><input type="button" class="btn btn btn-success" style="width: 70px" value="Show"> </a></td>
-	</tr>
+	
 
 	<tr>
 	<td align="center"> <b> Add Medicine</td>

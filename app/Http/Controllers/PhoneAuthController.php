@@ -158,11 +158,20 @@ class PhoneAuthController extends Controller
         //$reg = OTP::find($email);
 
         //$reg->email = $request->input('email');
+        $ncode = $request->input('ncode');
         $reg->code = $request->input('code');
         
+        if($reg->code == $ncode)
+        {
+
         $reg->update();
        
         return redirect()->back()->with('status','OTP Information updated Successfully');
+        }
+        elseif($reg->code != $ncode)
+        {
+          return redirect()->back()->with('nstatus','Password did not match. Try again.');
+        }
     
     }
 

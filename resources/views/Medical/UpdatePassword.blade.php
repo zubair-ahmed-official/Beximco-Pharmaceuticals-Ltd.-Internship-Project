@@ -7,6 +7,10 @@
                 <h6 class="alert alert-success">{{ session('status') }}</h6>
             @endif
 
+            @if (session('nstatus'))
+                <h6 class="alert alert-danger">{{ session('nstatus') }}</h6>
+            @endif
+            
             <div class="card">
             <div class="card-header">
                     <h4 style="color: brown"><b>
@@ -25,8 +29,17 @@
                             <span class="text-danger"> {{$message}} </span>
                             @enderror
                         </div>
+
                         <div class="form-group mb-3">
                             <label for="">New Password</label>
+                            <input type="password" name="ncode" value="" class="form-control">
+                            @error('ncode')
+                            <span class="text-danger"> {{$message}} </span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="">Type the New Password again</label>
                             <input type="password" name="code" value="" class="form-control">
                             @error('code')
                             <span class="text-danger"> {{$message}} </span>
