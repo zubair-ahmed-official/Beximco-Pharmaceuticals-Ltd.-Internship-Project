@@ -22,8 +22,10 @@
                         @method('POST')
 
                         <div class="form-group mb-3">
+                        @foreach ($uname as $item)
                             <label for=""><b>Patient's Name:</label>
-                            <input type="text" name="cname" class="form-control" value="{{old('cname')}}">
+                            <input type="text" name="cname" class="form-control" value="{{$item->name}}" readonly>
+                        @endforeach
                             @error('cname')
                             &nbsp; <span class="text-danger">{{$message}} </span>
                             @enderror

@@ -37,7 +37,7 @@
 
 	<tr>
 	<td align="center"> <b> All Customers</td>
-	<td align="center"><a href ="#"><input type="button" class="btn btn btn-success" style="width: 70px"  value="Show"> </a></td>
+	<td align="center"><a href ="index_cust"><input type="button" class="btn btn btn-success" style="width: 70px"  value="Show"> </a></td>
 	</tr>
 	<tr>
 	<td align="center"> <b> Add Event</td>

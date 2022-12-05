@@ -41,7 +41,7 @@
                             iii. Base 10 digits (0 to 9),
                             iv. Non-alphanumeric (For example: !, $, #, or %),
                             v. Unicode characters." style="text-decoration:none; color:navy">(Conditions)</a>
-                            <input type="text" name="code"  value="{{old('code')}}" class="form-control">
+                            <input type="password" name="code"  value="{{old('code')}}" class="form-control">
                             
                             @error('code')
                             <span class="text-danger"> {{$message}}</span>

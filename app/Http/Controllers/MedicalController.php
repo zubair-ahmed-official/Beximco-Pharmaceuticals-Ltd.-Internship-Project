@@ -83,6 +83,11 @@ class MedicalController extends Controller
         $notices = Notice::all();
         return view('Medical.Notices', compact('notices')); 
     }
+    public function index_cust()
+    {
+        $reg = Register::all();
+        return view('Medical.All_Customers', compact('reg')); 
+    }
 
 
     public function deliver_index()
@@ -141,6 +146,8 @@ class MedicalController extends Controller
         return view('Medical.add_notice');
     }
 
+    
+
     public function create_ques()
     {
         $Name = session()->get('email');
@@ -153,7 +160,14 @@ class MedicalController extends Controller
     {
         $student = Event::find($id);
         $student->delete();
-        return redirect()->back()->with('status','Event Deleted Successfully');
+        return redirect()->back()->with('status','Event Deleted Successfully'); 
+    }
+
+    public function delete_cust($id)
+    {
+        $student = Register::find($id);
+        $student->delete();
+        return redirect()->back()->with('status','Profile Deleted Successfully'); 
     }
 
     public function dlist()
@@ -373,8 +387,11 @@ class MedicalController extends Controller
 
     public function book_doctor_appointment($id)
     {
+      
+        $Name = session()->get('email');
+        $uname = Register :: all()->where('email',$Name); 
         $student = Doctor::find($id);
-        return view('Medical.Booking_DrAppointment', compact('student'));
+        return view('Medical.Booking_DrAppointment', compact('student'))->with('uname',$uname);
     }
 
     public function store_doctor_appointment(Request $request)
@@ -531,8 +548,10 @@ class MedicalController extends Controller
 
     public function ordering_med($id)
     {
+        $Name = session()->get('email');
+        $uname = Register :: all()->where('email',$Name); 
         $order_med = Medicine::find($id);
-        return view('Medical.order_med', compact('order_med'));
+        return view('Medical.order_med', compact('order_med'))->with('uname',$uname);
     } 
 
     public function again_ordering_med($email)

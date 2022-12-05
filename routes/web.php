@@ -69,6 +69,9 @@ Route::get('delete-doctors/{id}', [MedicalController::class, 'destroy'])->middle
 
 Route::get('index_medis', [MedicalController::class, 'index_medis'])->middleware('AdminAuth');
 
+Route::get('index_cust', [MedicalController::class, 'index_cust']);
+Route::get('delete-cust/{id}', [MedicalController::class, 'delete_cust']);
+
 Route::get('cust_index_medis', [MedicalController::class, 'cust_index_medis'])->middleware('Auth');
 
 Route::get('add-med', [MedicalController::class, 'create_med'])->middleware('AdminAuth');
