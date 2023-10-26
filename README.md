@@ -1,6 +1,6 @@
 # Beximco Pharmaceuticals Ltd. 
 💼 Management Information System Intern <br>
-📍  Dhaka, Bangladesh  <br>
+📍 &nbsp;Dhaka, Bangladesh  <br>
 📅 September 2022 - November 2022  <br>
 
 ✔ Built a web application related online Pharmaceuticals using PHP and Laravel Framework.  <br>
